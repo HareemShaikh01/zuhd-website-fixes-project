@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zuhd Maktab - After-school Islamic Classes</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css?v=2" />
+    <!-- GSAP core + ScrollTrigger CDN -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+    ></script>
+    <!-- Your custom JS -->
+    <script defer src="script.js"></script>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      /* :root {
+            --deep-green: #0d2818;
+            --primary-color: #1a472a;
+            --gold: #c6a87d;
+            --secondary: #2e7d32;
+        } */
+
+      body {
+        font-family: "Serotiva-Light";
+        margin: 0;
+        padding: 0;
+        /* background-color: #f9f9f9; */
+      }
+
+      .main-container {
+        /* max-width: 1200px; */
+        margin: 0 auto;
+        /* padding: 0 20px; */
+      }
+
+      .banner-text {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 90%;
+        margin: clamp(40px, 10vw, 60px) auto 0;
+        border-radius: 15px;
+        padding: clamp(15px, 5vw, 20px);
+      }
+      .curriculum-section {
+        padding: 0;
+        background: var(--white);
+        max-width: 1200px;
+        margin: 70px auto;
+        /* padding-left: 20px;
+    padding-right: 20px; */
+      }
+
+      .curriculum-heading {
+        color: var(--gold);
+        font-size: 2.5rem;
+        margin: 40px auto;
+      }
+
+      .curriculum-item {
+        background: #ffffff;
+        /* padding: clamp(15px, 5vw, 25px); */
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        /* margin-bottom: clamp(30px, 8vw, 80px); */
+      }
+
+      .curriculum-item .curriculum-subtitle {
+        font-size: 1.7rem;
+        /* font-weight: 900; */
+        color: var(--deep-green);
+        margin-bottom: 12px;
+      }
+
+      .curriculum-item p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #444;
+      }
+
+      .curriculum-item:hover {
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+      }
+
+      .calendar-downloads-section {
+        padding: 0px 20px;
+        /* padding: 0 auto; */
+      }
+
+      .section-heading-center-green-alt {
+        color: var(--gold);
+        font-size: 2.5rem;
+        text-align: center;
+        margin-top: 70px;
+        margin-bottom: 15px;
+      }
+
+      .section-heading-center-green-alt1 {
+        color: var(--deep-green);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        text-align: center;
+        /* margin-top: clamp(30px, 8vw, 60px);
+            margin-bottom: 15px; */
+      }
+
+      .calendar-description {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #ebe8e8;
+        width: 100%;
+        margin-bottom: 60px;
+        line-height: 1.6;
+      }
+
+      .calendar-content {
+        display: flex;
+        gap: clamp(15px, 5vw, 30px);
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .calendar-image-wrapper {
+        flex: 1 1 300px;
+        text-align: center;
+      }
+
+      .calendar-image {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .calendar-image:hover {
+        transform: scale(1.03);
+      }
+
+      .calendar-download-area {
+        flex: 1 1 300px;
+        background: white;
+        /* padding: clamp(15px, 5vw, 25px); */
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .calendar-download-area p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #444;
+      }
+
+      .calendar-download-title {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        color: var(--deep-green);
+      }
+
+      .calendar-download-text {
+        font-size: clamp(0.8rem, 2vw, 0.95rem);
+        margin-bottom: 15px;
+        color: #666;
+      }
+
+      .download-button {
+        display: inline-block;
+        padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px);
+        background-color: var(--deep-green);
+        color: white;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        text-align: center;
+      }
+
+      .download-button:hover {
+        background-color: var(--gold);
+        color: var(--deep-green);
+      }
+
+      .content-wrapper {
+        padding: clamp(10px, 5vw, 20px);
+
+        width: 100%;
+        margin-top: -130px;
+        background-color: #ffffff;
+      }
+
+      .content-container {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 135px;
+        text-align: center;
+      }
+
+      .content-title1 {
+        font-size: 2.5rem;
+        color: var(--deep-green);
+        /* font-weight: 700; */
+        margin-bottom: 15px;
+        padding-top: 30px;
+      }
+
+      .content-description1 {
+        font-size: 1.2rem;
+        color: #444;
+        line-height: 1.7;
+        /* max-width: 90%; */
+        margin: 0 auto 40px;
+      }
+
+      .services-layout {
+        display: flex;
+        justify-content: center;
+        gap: clamp(15px, 5vw, 25px);
+        flex-wrap: wrap;
+      }
+
+      .service-box {
+        background: #fff;
+        padding: clamp(15px, 5vw, 25px);
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+        flex: 1 1 280px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .service-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        color: var(--deep-green);
+        margin-bottom: 15px;
+        font-size: clamp(2rem, 6vw, 2.5rem);
+      }
+
+      .service-name {
+        font-size: clamp(1.2rem, 3vw, 1.4rem);
+        font-weight: 700;
+        color: var(--deep-green);
+        margin-bottom: 10px;
+      }
+
+      .service-info {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .about-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        padding: clamp(40px, 8vw, 40px) clamp(100px, 5vw, 20px);
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .about-content {
+        flex: 1;
+      }
+
+      .about-content .section-heading {
+        font-size: 2.5rem;
+        /* font-weight: 800; */
+        color: var(--deep-green);
+        /* margin-bottom: 20px; */
+      }
+
+      .about-content .section-paragraph {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        word-spacing: 0px;
+        color: #444;
+        /* margin-bottom: 15px; */
+      }
+
+      .about-image-wrapper {
+        flex: 1;
+        text-align: center;
+      }
+
+      .about-image {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .about-image {
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .about-image:hover {
+        transform: none !important;
+      }
+
+      .teachers-venues-section {
+        /* background-color: #1a3c34;  */
+      }
+
+      .teachers-content .section-heading-white {
+        font-size: 2.5rem;
+        /* font-weight: 800; */
+        color: var(--gold);
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .teachers-content .section-paragraph-white {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        /* letter-spacing: 0; */
+        color: #ececec;
+        margin-bottom: 15px;
+      }
+
+      .section-heading-center-white {
+        text-align: center;
+        color: var(--gold);
+        font-size: 2.5rem;
+        /* font-weight: 800; */
+        margin-top: 70px;
+        margin-bottom: 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 10px 0;
+        border-radius: 6px;
+      }
+
+      .curriculum-grid {
+        gap: 15px;
+      }
+      .rules-description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #ececec;
+        width: 100%;
+        margin: 0px auto 60px;
+        gap: 3px;
+        text-align: center;
+        /* padding: 0 10px; */
+        /* font-weight: 400; */
+      }
+      .rules-regulations-section {
+        padding: 0;
+      }
+      .main-images-rules {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto 70px;
+        padding: 0 20px; /* Reduced padding for better fit on mobile */
+        gap: clamp(
+          15px,
+          4vw,
+          20px
+        ); /* Adjusted gap for tighter spacing on smaller screens */
+        justify-content: center;
+        align-items: stretch; /* Ensures consistent height for items */
+      }
+      .rules-image-wrapper {
+        flex: 1 1 300px; /* Allow items to grow but set a reasonable minimum width */
+        text-align: center;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column; /* Stack image, label, and button vertically */
+        align-items: center; /* Center content horizontally */
+        gap: 10px; /* Space between image, label, and button */
+      }
+      .rules-image {
+        width: 100%;
+        /* height: auto; */
+        max-height: 300px; /* Limit image height to prevent excessive scaling */
+        object-fit: cover; /* Ensure images scale nicely without distortion */
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .pdf-download-container {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .pdf-download-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* Space between icon and text */
+        /* margin-top: 10px; */
+        padding: 20px 20px;
+        background-color: var(--gold);
+        color: var(--deep-green);
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 250px; /* Limit button width for better proportionality */
+        text-align: center;
+        font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+      }
+      .pdf-download-btn:hover {
+        background-color: var(--deep-green);
+        color: var(--gold);
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(15, 61, 46, 0.35);
+      }
+
+      .pdf-download-btn .pdf-icon {
+        width: 20px;
+        height: 20px;
+        fill: var(--deep-green);
+        transition: fill 0.3s ease;
+      }
+
+      .pdf-download-btn:hover .pdf-icon {
+        fill: var(--gold);
+      }
+
+      .primary-btn {
+        display: block;
+        width: max-content;
+        margin: 40px auto 0;
+        padding: 14px 35px;
+        background: var(--secondary);
+        color: var(--gold);
+        border: none;
+        border: 1px solid var(--gold);
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(15, 61, 46, 0.2);
+      }
+
+      .primary-btn:hover,
+      .download-button:hover,
+      .pdf-download-btn:hover {
+        background-color: var(--deep-green);
+        color: var(--gold);
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(15, 61, 46, 0.35);
+      }
+      .rules-image {
+        width: 100%;
+        /* height: auto; */
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+      }
+
+      .rules-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        /* .main-container {
+                padding: 0 15px;
+            } */
+
+        .banner-text {
+          padding: 15px;
+          margin-top: 30px;
+        }
+        .about-content .section-paragraph {
+          font-size: 1.2rem;
+        }
+
+        .banner-text h1 {
+          font-size: clamp(1.5rem, 6vw, 2rem);
+        }
+
+        .banner-text h3 {
+          font-size: clamp(1rem, 4vw, 1.2rem);
+        }
+
+        .banner-text h4 {
+          font-size: clamp(0.8rem, 3vw, 1rem);
+        }
+
+        .pdf-download-container {
+          margin-top: 0;
+        }
+
+        .calendar-image {
+          margin: 10px auto;
+        }
+
+        .content-wrapper {
+          padding: 40px 15px;
+        }
+
+        .content-title1 {
+          padding-top: 10px;
+          font-size: 2.5rem;
+        }
+
+        .content-description1 {
+          font-size: 1.1rem;
+        }
+
+        .services-layout {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .service-box {
+          flex: 1 1 100%;
+          padding: 20px;
+        }
+
+        .about-section {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 0;
+          padding: 30px 15px;
+        }
+
+        .about-content {
+          order: 2;
+          padding: 10px;
+        }
+        .rules-regulations-section {
+          padding: 0;
+        }
+
+        .about-image-wrapper {
+          order: 1;
+          /* height: auto; */
+          /* max-width: 90%; */
+        }
+        .section-paragraph {
+          padding: 0;
+        }
+        /* .section-heading{
+                
+            } */
+
+        .curriculum-section {
+          padding: 30px 15px;
+        }
+
+        .curriculum-item {
+          padding: 15px;
+          margin-bottom: 30px;
+        }
+
+        .curriculum-item .curriculum-subtitle {
+          font-size: 1.5rem;
+        }
+
+        .teachers-venues-section {
+          padding: 0px 15px;
+        }
+
+        .teachers-content {
+          text-align: center;
+          /* padding: 20px; */
+        }
+
+        .teachers-content .section-heading-white {
+          font-size: 2.5rem;
+          /* font-weight: 2000; */
+          text-align: center;
+        }
+
+        .teachers-content .section-paragraph-white {
+          font-size: 1.2rem;
+        }
+
+        .calendar-downloads-section {
+          padding: 0px 15px;
+        }
+
+        .calendar-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .calendar-image-wrapper {
+          max-width: 90%;
+        }
+
+        .calendar-download-area {
+          padding: 15px;
+        }
+
+        .rules-regulations-section {
+          padding: 20px 10px;
+        }
+
+        .rules-description {
+          margin-bottom: 20px;
+          padding: 0 5px;
+        }
+        .section-heading-center-white {
+          margin: 0 auto;
+        }
+        .main-images-rules {
+          flex-direction: column;
+          gap: 20px; /* Slightly larger gap for clarity */
+          padding: 0 15px;
+        }
+        .image-label {
+          font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+
+          font-weight: 600;
+          margin: 10px 0;
+        }
+        .rules-image-wrapper {
+          flex: 1 1 100%; /* Full width on mobile */
+          max-width: 100%; /* Ensure it doesn't exceed container */
+        }
+        .pdf-download-btn {
+          max-width: 220px; /* Smaller button width for mobile */
+          padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 12px);
+          font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* .main-container {
+                padding: 0 10px;
+            } */
+
+        .banner-text {
+          padding: 10px;
+          margin-top: 20px;
+        }
+        .content-title1 {
+          font-size: 2rem;
+        }
+        .banner-text h1 {
+          font-size: clamp(2rem, 5vw, 1.8rem);
+        }
+        .about-content .section-heading {
+          font-size: 2rem;
+        }
+
+        .banner-text h3 {
+          font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .about-content .section-paragraph {
+          font-size: 1.1rem;
+        }
+        .banner-text h4 {
+          font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+        }
+        .teachers-content .section-heading-white {
+          font-size: 2rem;
+        }
+        .section-heading-center-white {
+          font-size: 2rem;
+        }
+        .section-heading {
+          padding: 0px;
+          font-size: 2rem;
+          margin-top: 0px;
+        }
+        .teachers-image {
+          margin: 20px auto 0px;
+        }
+
+        .curriculum-section {
+          margin: 0;
+        }
+        .section-heading-center-green-alt {
+          margin: 20px auto;
+          font-size: 2rem;
+        }
+        .calendar-description {
+          margin-bottom: 50px;
+          font-size: 1.1rem;
+        }
+
+        .primary-btn,
+        .download-button,
+        .pdf-download-btn,
+        .newsletter-form button {
+          font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+          padding: 10px;
+        }
+        .teachers-content .section-paragraph-white {
+          font-size: 1.1rem;
+        }
+
+        .main-images-rules {
+          padding: 0 10px; /* Further reduced padding */
+          gap: 15px;
+        }
+        .rules-image {
+          /* max-height: 200px;  */
+        }
+        .image-label {
+          font-size: clamp(0.8rem, 2.5vw, 1rem);
+        }
+        .rules-regulations-section {
+          padding: 0px 5px;
+          margin: 50px auto;
+        }
+        .pdf-download-btn {
+          max-width: 200px; /* Even smaller button for tiny screens */
+          padding: clamp(5px, 1.5vw, 7px) clamp(8px, 2.5vw, 10px);
+          font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+        }
+        .rules-description {
+          font-size: clamp(0.8rem, 2vw, 1.1rem);
+          margin: 0 auto 30px;
+          padding: 0px 20px;
+        }
+
+        .rules-image-wrapper {
+          gap: 8px; /* Tighter spacing for smaller screens */
+        }
+
+        .pdf-download-btn {
+          padding: clamp(4px, 1.5vw, 8px) clamp(8px, 2.5vw, 15px);
+          font-size: clamp(0.7rem, 2vw, 0.9rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div id="navbar"></div>
+    </nav>
+    <div class="main-container">
+      <!-- Banner Section -->
+      <section class="banner-wrapper3">
+        <div class="banner-overlay"></div>
+        <div class="banner-text">
+          <h1 class="main-heading">ZUHD MAKTAB</h1>
+          <p class="sub-heading">After School Classes for Boys & Girls</p>
+          <p class="sub-heading2">
+            <span>MON - THR | 6:45 PM - 8:15 PM | 200$ Per School Term</span>
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd28zYx4yYo1FRDzKutAoKG8c49nIL6sVuGy6oLAedu_IwwHA/viewform"
+          >
+            <button class="primary-btn" onclick="scrollToAction()">
+              ENROLL NOW
+            </button>
+          </a>
+        </div>
+      </section>
+      <!-- Content Section -->
+      <section class="content-wrapper">
+        <div class="content-container">
+          <h2 class="content-title1">Islamic Education for Young Muslims</h2>
+          <p class="content-description1">
+            Our maktab classes provide essential Islamic education for
+            school-aged children in a supportive and nurturing environment. We
+            focus on building strong foundations in Quranic recitation, Islamic
+            studies, and ethics.
+          </p>
+          <!-- Services Grid -->
+          <div class="services-layout">
+            <div class="service-box">
+              <div class="service-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path
+                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="service-name">QURAN READING</h3>
+              <p class="service-info">
+                Learn to read and memorize the Quran with proper tajweed
+              </p>
+            </div>
+            <div class="service-box">
+              <div class="service-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M3 21h18" />
+                  <path d="M5 21V7l8-4v18" />
+                  <path d="M19 21V11l-6-4" />
+                </svg>
+              </div>
+              <h3 class="service-name">ISLAMIC STUDIES</h3>
+              <p class="service-info">
+                Explore the core teachings and practices of Islam
+              </p>
+            </div>
+            <div class="service-box">
+              <div class="service-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                  />
+                </svg>
+              </div>
+              <h3 class="service-name">ISLAMIC ETHICS</h3>
+              <p class="service-info">
+                Develop good character and moral values
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section class="about-section">
+        <div class="about-content">
+          <h2 class="section-heading">What is Maktab?</h2>
+          <p class="section-paragraph">
+            Islamic after-school classes, commonly known as Maktab, are
+            supplementary educational programs designed to provide children and
+            teenagers in Muslim communities with a deeper understanding of
+            Islam. These classes typically take place outside of regular school
+            hours, offering a dedicated space for spiritual and intellectual
+            growth.
+          </p>
+          <p class="section-paragraph">
+            Our program focuses on foundational Islamic principles, including
+            the Quran, Hadith, Islamic history, Fiqh (jurisprudence), and Aqidah
+            (creed). We aim to equip students with the knowledge and skills
+            necessary to navigate modern life while staying true to their
+            faith.curriculum-gridcurriculum-grid
+          </p>
+        </div>
+        <div class="about-image-wrapper">
+          <img
+            src="/70e159c7-5700-4b3f-85f2-4c6195fdc984.png"
+            alt="Children studying Quran"
+            class="about-image"
+          />
+        </div>
+      </section>
+      <!-- Curriculum Section -->
+      <section class="curriculum-section">
+        <h2 class="section-heading curriculum-heading">
+          Our Engaging Curriculum
+        </h2>
+        <div class="curriculum-grid">
+          <div class="curriculum-item">
+            <h2 class="curriculum-subtitle">Unique & Standards-Based Books</h2>
+            <p class="section-paragraph">
+              Our curriculum utilizes new, unique books developed specifically
+              for our program. These resources are crafted on the basis of high
+              educational standards and the core focus of our program, ensuring
+              a comprehensive and relevant learning experience.
+            </p>
+            <p class="section-paragraph">
+              The curriculum is designed to be engaging, challenging, and
+              enriched, focusing on vital topics like Islamic ethics,
+              jurisprudence, and spirituality. We strive to make learning
+              enjoyable and impactful.
+            </p>
+          </div>
+          <div class="curriculum-item">
+            <h3 class="curriculum-subtitle">
+              Holistic Development & National Exams
+            </h3>
+            <p class="section-paragraph">
+              In some areas, our classes are designed to meet the requirements
+              for national exams, covering major and minor subjects such as
+              Math, Science, and English, alongside Islamic studies. This
+              holistic approach supports students' overall academic success.
+            </p>
+            <p class="section-paragraph">
+              We believe in nurturing well-rounded individuals who excel not
+              only in their religious knowledge but also in their secular
+              education, preparing them for future challenges.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Teachers & Venues Section -->
+      <section class="teachers-venues-section">
+        <div class="teachers-image-wrapper">
+          <img
+            src="/islamic.png"
+            alt="Volunteer teacher"
+            class="teachers-image"
+          />
+        </div>
+        <div class="teachers-content">
+          <h2 class="section-heading-white">Dedicated Teachers</h2>
+          <p class="section-paragraph-white">
+            Our Islamic after-school classes are often taught by passionate
+            volunteer teachers. These dedicated individuals are highly
+            knowledgeable in Islamic studies and are committed to sharing their
+            wisdom with the next generation. Their enthusiasm creates an
+            inspiring learning environment.
+          </p>
+          <p class="section-paragraph-white">
+            Classes are held in various accessible locations, including local
+            mosques, vibrant community centers, or other dedicated educational
+            spaces. We ensure a comfortable and conducive environment for all
+            our students.
+          </p>
+        </div>
+      </section>
+      <!-- Calendar & Downloads Section -->
+      <section class="calendar-downloads-section">
+        <h2 class="section-heading-center-green-alt">Academic Calendar</h2>
+        <p class="section-paragraph calendar-description">
+          Stay updated with our academic schedule and important dates. Download
+          our annual calendar and other essential documents here.
+        </p>
+        <div class="calendar-content">
+          <div class="calendar-image-wrapper">
+            <img
+              src="/calender.jpg"
+              alt="Maktab Academic Calendar"
+              class="calendar-image"
+            />
+          </div>
+          <div class="calendar-download-area">
+            <h3 class="section-heading-center-green-alt1">
+              Maktab Academic Calendar
+            </h3>
+            <p class="section-paragraph-white">
+              In addition to providing students with a deeper understanding of
+              Islam, these classes can also help to foster a sense of community
+              among Muslim families. By attending these classes, children and
+              teenagers can connect with their peers and develop relationships
+              with older members of the community who can serve as mentors and
+              role models.
+            </p>
+            <p class="section-paragraph-white">
+              Overall, Islamic after-school classes play an important role in
+              the education and spiritual development of young Muslims,
+              providing them with the knowledge and skills they need to navigate
+              the challenges of modern life while remaining true to their faith.
+            </p>
+            <h3 class="calendar-download-title">Download Our Calendar</h3>
+            <p class="calendar-download-text">
+              Get the full academic year schedule in PDF format.
+            </p>
+            <a
+              href="/calender.pdf"
+              download="Maktab_Academic_Calendar.pdf"
+              class="button download-button"
+            >
+              Download Calendar PDF
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Rules & Regulations Section -->
+      <!-- Rules & Regulations Section -->
+      <section class="rules-regulations-section">
+        <h2 class="section-heading-center-white">Rules and Regulations</h2>
+        <p class="section-paragraph rules-description">
+          To ensure a safe, respectful, and productive learning environment for
+          all students, please review our rules and regulations.
+        </p>
+        <div class="main-images-rules">
+          <div class="rules-image-wrapper">
+            <img
+              src="maktab/RULES &REGULATIONS.png"
+              alt="Thumbnail for Rules Page 1"
+              class="rules-image"
+            />
+            <div class="image-label">Rules & Guidelines - Page 1</div>
+            <div class="pdf-download-container">
+              <a
+                href="/rule1.pdf"
+                class="pdf-download-btn"
+                download="Maktab_Rules_Regulations.pdf"
+              >
+                <svg class="pdf-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
+                  <path d="M12,17L17,12H14V7H10V12H7L12,17Z" />
+                </svg>
+                Download Full Rule 1 PDF
+              </a>
+            </div>
+          </div>
+          <div class="rules-image-wrapper">
+            <img
+              src="maktab/TRAFFIC MANAGEMENT PROCEEDURES.png"
+              alt="Thumbnail for Rules Page 2"
+              class="rules-image"
+            />
+            <div class="image-label">Rules & Guidelines - Page 2</div>
+            <div class="pdf-download-container">
+              <a
+                href="/rule2.pdf"
+                class="pdf-download-btn"
+                download="Maktab_Rules_Regulations.pdf"
+              >
+                <svg class="pdf-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
+                  <path d="M12,17L17,12H14V7H10V12H7L12,17Z" />
+                </svg>
+                Download Full Rule 2 PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-column">
+            <h3>zuhd Academy</h3>
+            <ul>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('About ZUHD')"
+                  >About ZUHD</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/zuhd-lectures.html"
+                  onclick="linkClick('ZUHD Lectures')"
+                  >ZUHD Lectures</a
+                >
+              </li>
+              <li>
+                <a href="/desclimer.html" onclick="linkClick('Disclaimer')"
+                  >Disclaimer</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/after-school-classes.html"
+                  onclick="linkClick('After School Classes')"
+                  >After School Classes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  onclick="linkClick('Terms and conditions')"
+                  >Terms and conditions</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="/store.html" onclick="linkClick('zuhd Store')"
+                  >zuhd Store</a
+                >
+              </li>
+              <li>
+                <a href="/donate.html" onclick="linkClick('Donate Now')"
+                  >Donate Now</a
+                >
+              </li>
+              <li>
+                <a href="/ziyarat.html" onclick="linkClick('Ziyarat')"
+                  >Ziyarat</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li>
+                <a href="/our-story.html" onclick="linkClick('Our Story')"
+                  >Our Story</a
+                >
+              </li>
+              <li><a href="/blog.html" onclick="linkClick('Blog')">Blog</a></li>
+              <li>
+                <a href="/about.html" onclick="linkClick('About Us')"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="/contact.html" onclick="linkClick('Contact Us')"
+                  >Contact Us</a
+                >
+              </li>
+              <!-- <li><a href="/faq.html" onclick="linkClick('FAQ')">FAQ's</a></li> -->
+            </ul>
+          </div>
+          <div class="footer-column newsletter">
+            <h3>Stay Connected to Guidance</h3>
+            <p>
+              Be the first to receive Islamic guidance, inspiring articles, and
+              special offers—only from ZUHD.
+            </p>
+            <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">→</button>
+            </form>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/zuhd.au"
+                class="social-link"
+                onclick="socialClick('Facebook')"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/zuhd_au"
+                class="social-link"
+                onclick="socialClick('Instagram')"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@zuhd.store"
+                class="social-link"
+                onclick="socialClick('TikTok')"
+                title="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@zuhdau"
+                class="social-link"
+                onclick="socialClick('YouTube')"
+                title="YouTube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2024 Zuhd Guidance All rights reserved.</div>
+          <div class="footer-links">
+            <a href="#" onclick="linkClick('Terms of Service')"
+              >Terms of Service</a
+            >
+            <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+            <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+            <a href="#" onclick="linkClick('Accessibility Policy')"
+              >Accessibility Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // footer js
+
+      // Mobile accordion functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const footerColumns = document.querySelectorAll(
+          ".footer-column:not(.newsletter)"
+        );
+
+        footerColumns.forEach((column) => {
+          const header = column.querySelector("h3");
+
+          header.addEventListener("click", function () {
+            if (window.innerWidth <= 768) {
+              column.classList.toggle("active");
+            }
+          });
+        });
+
+        // Handle window resize
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 768) {
+            footerColumns.forEach((column) => {
+              column.classList.remove("active");
+            });
+          }
+        });
+      });
+
+      // Analytics functions (placeholder implementations)
+      function linkClick(linkName) {
+        console.log("Link clicked:", linkName);
+        // Analytics tracking would go here
+      }
+
+      function socialClick(platform) {
+        console.log("Social media clicked:", platform);
+        // Analytics tracking would go here
+      }
+
+      function submitNewsletter(event) {
+        event.preventDefault();
+        const email = event.target.querySelector('input[type="email"]').value;
+        console.log("Newsletter subscription:", email);
+        alert("Thank you for subscribing! (This is a demo)");
+        event.target.reset();
+      }
+      // Image load effect
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll(
+          ".rules-image, .calendar-image, .about-image, .teachers-image"
+        );
+        images.forEach((img) => {
+          img.addEventListener("load", function () {
+            this.parentElement.style.setProperty("--loaded", "1");
+          });
+        });
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+    <script src="navbar.js"></script>
+    <script src="script.js"></script>
+    <script src="/cacheBuster.js"></script>
+  </body>
+</html>

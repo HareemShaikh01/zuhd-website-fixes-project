@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tazkiyah – Purifying the Soul in a Modern World | Zuhd Maktab</title>
+    <style>
+:root {
+  --gold: #c89b3c;
+  --beige: #f5f2e9;
+  --cream: #fffaf0;
+  --deep-green: #0f3d2e;
+}
+
+@font-face {
+  font-family: "Serotiva-Black";
+  src: url(./font/OpenType-TT/Serotiva-Black.ttf);
+}
+
+@font-face {
+  font-family: "Serotiva-Bold";
+  src: url(./font/OpenType-TT/Serotiva-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Serotiva-Light";
+  src: url(./font/OpenType-TT/Serotiva-Light.ttf);
+}
+
+@font-face {
+  font-family: "Serotiva-Regular";
+  src: url(./font/OpenType-TT/Serotiva-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
+  line-height: 1.6;
+  color: #0c0d0e;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: relative;
+  height: 80vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://i.ibb.co/SD1Zszym/Consistency-in-Salah-Tips-for-the-Busy-Muslim.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0; /* keep background lowest */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1; /* overlay above background */
+}
+
+.hero-title {
+  position: relative;
+  font-size: 3rem;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  padding: 0 1rem;
+  width: 800px;
+  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+  line-height: 60px;
+  text-transform: uppercase;
+  z-index: 2; /* content above overlay */
+  font-family: "Serotiva-Black";
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.75rem;
+  }
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.article-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.article-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #064e3b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-family: "Serotiva-Bold";
+}
+
+@media (min-width: 768px) {
+  .article-title {
+    font-size: 3rem;
+  }
+}
+
+.article-date {
+  color: #4b5563;
+  font-size: 1.125rem;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #064e3b;
+  margin-bottom: 1.5rem;
+  font-family: "Serotiva-Bold";
+}
+
+.section-content {
+  color: #1f2937;
+  line-height: 1.75;
+}
+
+.section-content p {
+  margin-bottom: 1rem;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: "Serotiva-Regular";
+}
+
+/* Quick Reminders List */
+.quick-list {
+  list-style: decimal;
+  list-style-position: inside;
+  padding-left: 1rem;
+  color: #1f2937;
+  font-family: "Serotiva-Regular";
+}
+
+.quick-list li {
+  margin-bottom: 0.5rem;
+  font-family: "Serotiva-Regular";
+  font-size: 20px;
+}
+
+/* Tip Cards */
+.tip-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.tip-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.tip-title {
+  font-weight: bold;
+  color: #064e3b;
+  font-size: 28px;
+  margin-bottom: 0.75rem;
+  font-family: "Serotiva-Bold";
+}
+
+.tip-description {
+  color: #1f2937;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-family: "Serotiva-Regular";
+}
+
+.verse-box {
+  background-color: #dbeafe;
+  border-left: 4px solid #20492a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-family: "Serotiva-Regular";
+}
+
+.tip-box {
+  background-color: #dcfce7;
+  border-left: 4px solid #c5b17a;
+  padding: 1rem;
+  font-family: "Serotiva-Regular";
+}
+
+.verse-box strong,
+.tip-box strong {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Serotiva-Regular";
+}
+
+/* Back Link */
+.back-link-container {
+  text-align: center;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #0f3d2e;
+  color: #020202;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: "Serotiva-regular";
+}
+
+.back-link:hover {
+  background-color: #0f3d2e;
+  color: white;
+}
+
+.arrow-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Links */
+a {
+  color: #0f3d2e;
+  text-decoration: none;
+  font-family: "Serotiva-regular";
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.conclusion-links a {
+  margin-left: 0.25rem;
+}
+
+@media (min-width: 480px) {
+  .article-title {
+    font-size: 3rem;
+  }
+}
+
+/* Mobile Responsive Media Queries */
+
+/* Extra Small Devices (phones, 320px and up) */
+@media (max-width: 480px) {
+  /* Adding mobile-first responsive styles */
+  .hero-banner {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    width: 100%;
+    max-width: 300px;
+    line-height: 1.3;
+    padding: 0 0.5rem;
+  }
+
+  .main-content {
+    padding: 2rem 1rem;
+  }
+
+  .article-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-content p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0.75rem;
+  }
+
+  .quick-list li {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .tip-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tip-title {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+  }
+
+  .tip-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .verse-box,
+  .tip-box {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .verse-box strong,
+  .tip-box strong {
+    font-size: 16px;
+  }
+
+  .back-link {
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+  }
+}
+
+/* Small Devices (landscape phones, 481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  /* Styles for small landscape devices */
+  .hero-banner {
+    height: 70vh;
+    min-height: 350px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    width: 100%;
+    max-width: 500px;
+    line-height: 1.2;
+  }
+
+  .main-content {
+    padding: 3rem 1.25rem;
+  }
+
+  .article-title {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-content p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .quick-list li {
+    font-size: 18px;
+  }
+
+  .tip-title {
+    font-size: 24px;
+  }
+
+  .tip-description {
+    font-size: 17px;
+  }
+}
+
+/* Medium Devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Tablet-specific optimizations */
+  .hero-title {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .main-content {
+    max-width: 900px;
+    padding: 3.5rem 2rem;
+  }
+
+  .tip-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .article-title {
+    font-size: 2.75rem;
+  }
+}
+
+/* Large Devices (desktops, 992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Desktop optimizations */
+  .main-content {
+    max-width: 1000px;
+  }
+
+  .tip-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Large desktop enhancements */
+  .tip-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .main-content {
+    padding: 5rem 2rem;
+  }
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Landscape phone optimizations */
+  .hero-banner {
+    height: 100vh;
+    min-height: 400px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}
+
+/* High DPI/Retina Display Adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Retina display optimizations */
+  .hero-bg {
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="navbar"></div>
+    </nav>
+
+    <div class="min-h-screen">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <h1 class="hero-title">Tazkiyah – Purifying the Soul in a Modern World</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <article>
+                <header class="article-header">
+                    <h1 class="article-title">
+                        Tazkiyah – Purifying the Soul in a Modern World
+                    </h1>
+                    <p class="article-date">
+                        <strong>Date:</strong> August 27, 2025
+                    </p>
+                </header>
+
+                <!-- Introduction -->
+                <section class="section">
+                    <h2 class="section-title">Introduction</h2>
+                    <div class="section-content">
+                        <p>
+                            In today's fast-paced and distraction-filled world, the concept of Tazkiyah—purifying the soul—holds more importance than ever before. Social media, materialism, constant comparisons, and the pressures of modern life often cloud the heart and distance us from Allah ﷻ. Yet, Allah reminds us in the Qur'an that true success lies not in wealth or worldly gain, but in the purification of the soul.
+                        </p>
+                        <p>
+                            Tazkiyah is not just a spiritual practice for scholars or ascetics; it is a journey for every believer who wishes to strengthen their connection with Allah ﷻ, cleanse their heart from sins, and lead a life that pleases Him. The word Tazkiyah in Arabic means purification, growth, and nurturing—cleansing the heart from spiritual diseases while nurturing it with faith, sincerity, humility, gratitude, and patience.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Quick Reminders -->
+                <section class="section">
+                    <h2 class="section-title">Carousel Snapshot (Quick Reminders)</h2>
+                    <ol class="quick-list">
+                        <li>Strengthening Connection with the Qur'an</li>
+                        <li>Engaging in Regular Dhikr</li>
+                        <li>Practicing Sincerity in Worship</li>
+                        <li>Guarding Against Sins and Temptations</li>
+                        <li>Keeping Good Company</li>
+                        <li>Practicing Gratitude and Patience</li>
+                    </ol>
+                </section>
+
+                <!-- Tips -->
+                <section class="tip-cards" id="tipCards">
+                </section>
+
+                <!-- Conclusion -->
+                <section class="section">
+                    <h2 class="section-title">Conclusion</h2>
+                    <div class="section-content">
+                        <p>
+                            In the modern world, distractions are endless, but the path of Tazkiyah remains timeless. By turning back to the Qur'an, following the Sunnah, remembering Allah ﷻ often, and striving to purify our intentions, we can achieve a heart that is content and connected to its Creator.
+                        </p>
+                        <p>
+                            True success is not measured by material wealth but by a purified soul. Applying Tazkiyah in our lives does not mean isolating ourselves from the world—it means living in this world while keeping our hearts attached to Allah. Whether through honest business dealings, modest behavior, or showing kindness to others, every action becomes a form of soul purification when done sincerely for Allah's sake.
+                        </p>
+                        <p><strong>🌿 Stay spiritually inspired with daily reminders at: Zuhd AU</strong></p>
+                        <p class="conclusion-links">
+                            🔗 Website:
+                            <a href="https://www.zuhd.au/">https://www.zuhd.au/</a>
+                            | ▶ YouTube:
+                            <a href="https://www.youtube.com/@zuhdau">Zuhd AU Channel</a>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Back Link -->
+                <div class="back-link-container">
+                    <a href="/blog.html" class="back-link">
+                        <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to All Articles
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>zuhd Academy</h3>
+                    <ul>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('About ZUHD')"
+                  >About ZUHD</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/zuhd-lectures.html"
+                  onclick="linkClick('ZUHD Lectures')"
+                  >ZUHD Lectures</a
+                >
+              </li>
+              <li>
+                <a href="/desclimer.html" onclick="linkClick('Disclaimer')"
+                  >Disclaimer</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/after-school-classes.html"
+                  onclick="linkClick('After School Classes')"
+                  >After School Classes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  onclick="linkClick('Terms and conditions')"
+                  >Terms and conditions</a
+                >
+              </li>
+            </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/store.html" onclick="linkClick('zuhd Store')">zuhd Store</a></li>
+                        <li><a href="/donate.html" onclick="linkClick('Donate Now')">Donate Now</a></li>
+                        <li><a href="/ziyarat.html" onclick="linkClick('Ziyarat')">Ziyarat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="/our-story.html" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="/blog.html" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="/about.html" onclick="linkClick('About Us')">About Us</a></li>
+                        <li><a href="/contact.html" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <!-- <li><a href="/faq.html" onclick="linkClick('FAQ')">FAQ's</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h3>Stay Connected to Guidance</h3>
+                    <p>Be the first to receive Islamic guidance, inspiring articles, and special offers—only from ZUHD.</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">→</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/zuhd.au" class="social-link" onclick="socialClick('Facebook')" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/zuhd_au" class="social-link" onclick="socialClick('Instagram')" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@zuhd.store" class="social-link" onclick="socialClick('TikTok')" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@zuhdau" class="social-link" onclick="socialClick('YouTube')" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Zuhd Guidance All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const tips = [
+            {
+                number: 1,
+                title: "🌿 Strengthening the Connection with the Qur'an",
+                description: "The Qur'an is the ultimate source of purification for the believer. Reciting, reflecting, and implementing its teachings nurture the heart and remove spiritual darkness.",
+                verse: {
+                    type: "Hadith",
+                    text: "The best of you are those who learn the Qur'an and teach it.",
+                    reference: "Sahih Bukhari 5027"
+                },
+                tip: "Keep a daily \"Alhamdulillah journal\" to record three blessings each night. Make the Qur'an a daily companion to gradually cleanse the soul from heedlessness."
+            },
+            {
+                number: 2,
+                title: "🌿 Engaging in Regular Dhikr (Remembrance of Allah)",
+                description: "In a world full of noise and distractions, constant remembrance of Allah brings inner peace and strengthens faith.",
+                verse: {
+                    type: "Qur'an",
+                    text: "Verily, in the remembrance of Allah do hearts find rest.",
+                    reference: "Surah Ar-Ra'd 13:28"
+                },
+                tip: "Keep your tongue moist with the remembrance of Allah. Start with simple adhkar like SubhanAllah, Alhamdulillah, and Allahu Akbar throughout your day."
+            },
+            {
+                number: 3,
+                title: "🌿 Practicing Sincerity (Ikhlas) in Worship",
+                description: "Sincerity is the foundation of Tazkiyah. In an era where showing off is common—especially on social media—it becomes vital to purify our intentions and perform acts of worship only for Allah's sake.",
+                verse: {
+                    type: "Hadith",
+                    text: "Actions are but by intention, and every man shall have only that which he intended.",
+                    reference: "Sahih Bukhari 1, Sahih Muslim 1907"
+                },
+                tip: "Before every act of worship, pause and check your intention. Ask yourself: Am I doing this for Allah's pleasure or for people to see?"
+            },
+            {
+                number: 4,
+                title: "🌿 Guarding Against Sins and Temptations",
+                description: "Modern society exposes us to countless temptations—whether it be indecency online, dishonesty in work, or the pursuit of fame. Protecting ourselves from sins is essential to maintain a pure soul.",
+                verse: {
+                    type: "Hadith",
+                    text: "When a servant commits a sin, a black spot appears on his heart. If he gives up that sin, seeks forgiveness, and repents, his heart will be polished. But if he persists, the blackness increases until it covers his heart.",
+                    reference: "Sunan Tirmidhi 3334"
+                },
+                tip: "Create barriers between yourself and sins: use website blockers, avoid places of temptation, and immediately seek forgiveness when you slip."
+            },
+            {
+                number: 5,
+                title: "🌿 Keeping Good Company",
+                description: "The people we surround ourselves with shape our spiritual state. Being with righteous companions helps us stay on the path of purification.",
+                verse: {
+                    type: "Hadith",
+                    text: "The example of a good companion in comparison with a bad one is like that of the musk seller and the blacksmith's bellows...",
+                    reference: "Sahih Bukhari 2101, Sahih Muslim 2628"
+                },
+                tip: "Evaluate your friendships: Do they bring you closer to Allah or further away? Seek companions who remind you of Allah and encourage good deeds."
+            },
+            {
+                number: 6,
+                title: "🌿 Practicing Gratitude and Patience",
+                description: "Gratitude (Shukr) and patience (Sabr) are twin qualities that cleanse the soul from arrogance and discontent.",
+                verse: {
+                    type: "Hadith",
+                    text: "Amazing is the affair of the believer! Verily, all of his affair is good, and this is for no one except the believer. If something good happens to him, he is grateful and that is good for him. If something bad befalls him, he is patient and that is good for him.",
+                    reference: "Sahih Muslim 2999"
+                },
+                tip: "Train yourself to say Alhamdulillah in ease and Hasbunallahu wa ni'mal wakeel in hardship. Both responses purify the heart and strengthen faith."
+            }
+        ];
+
+        // Function to create tip card HTML
+        function createTipCard(tip) {
+            const tipType = tip.tipType || 'tip';
+            const tipLabel = tipType === 'reflection' ? 'Reflection' : 'Tip';
+
+            return `
+                <div class="tip-card">
+                    <div class="tip-title">
+                        ${tip.number}. ${tip.title}
+                    </div>
+                    <p class="tip-description">${tip.description}</p>
+
+                    <div class="verse-box">
+                        <strong>${tip.verse.type}:</strong> ${tip.verse.text} (${tip.verse.reference})
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>${tipLabel}:</strong> ${tip.tip}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generate all tip cards
+        function generateTipCards() {
+            const tipCardsContainer = document.getElementById('tipCards');
+            const tipCardsHTML = tips.map(tip => createTipCard(tip)).join('');
+            tipCardsContainer.innerHTML = tipCardsHTML;
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', generateTipCards);
+
+        // footer js 
+        // Mobile accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerColumns = document.querySelectorAll('.footer-column:not(.newsletter)');
+
+            footerColumns.forEach(column => {
+                const header = column.querySelector('h3');
+
+                header.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        column.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    footerColumns.forEach(column => {
+                        column.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        // Analytics functions (placeholder implementations)
+        function linkClick(linkName) {
+            console.log('Link clicked:', linkName);
+            // Analytics tracking would go here
+        }
+
+        function socialClick(platform) {
+            console.log('Social media clicked:', platform);
+            // Analytics tracking would go here
+        }
+
+        function submitNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            console.log('Newsletter subscription:', email);
+            alert('Thank you for subscribing! (This is a demo)');
+            event.target.reset();
+        }
+    </script>
+
+    <script src="navbar.js"></script>
+    <script src="/cacheBuster.js"></script>
+
+</body>
+</html>

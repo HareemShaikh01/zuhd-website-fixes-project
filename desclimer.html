@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer</title>
+    <link rel="stylesheet" href="styles.css?v=2"/>
+    <style>
+        /* Added custom Serotiva font family definitions */
+        @font-face {
+            font-family: "Serotiva-Black";
+            src: url(./font/OpenType-TT/Serotiva-Black.ttf);
+        }
+        @font-face {
+            font-family: "Serotiva-Bold";
+            src: url(./font/OpenType-TT/Serotiva-Bold.ttf);
+        }
+        @font-face {
+            font-family: "Serotiva-Light";
+            src: url(./font/OpenType-TT/Serotiva-Light.ttf);
+        }
+        @font-face {
+            font-family: "Serotiva-Regular";
+            src: url(./font/OpenType-TT/Serotiva-Regular.ttf);
+        }
+
+        /* Simplified typography with only basic text animations */
+        h1 {
+            font-family: "Serotiva-Black";
+            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: clamp(1px, 0.5vw, 3px);
+            line-height: 1.1;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        h2,
+        h3 {
+            font-family: "Serotiva-Bold";
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            line-height: 1.3;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-family: "Serotiva-Regular";
+            font-size: 22px; /* Set desktop font size to 22px */
+            line-height: 1.6;
+            font-size: 1.2rem;
+            line-height:30px;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            transition: outline 0.2s ease;
+        }
+
+        /* Added CSS custom properties for color scheme */
+        :root {
+            --deep-green: #0f3d2e;
+            --sand-beige: #f7efe5;
+            --off-white: #fefefe;
+            --gold: #c8b88a;
+            --container-padding: clamp(1rem, 4vw, 2rem);
+            --section-spacing: clamp(2rem, 5vw, 3rem);
+        }
+
+        body {
+            background-color: white;
+            /* min-height: 100vh; */
+            font-family: "Serotiva-Regular";
+        }
+         .header h1{
+                font-size: 2.5rem;
+                margin-top: 100px;
+            }
+
+
+        /* Improved container structure with better max-width and centering */
+        .container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            position: relative;
+        }
+
+        /* Enhanced header with better background image handling and positioning */
+        .header {
+            text-align: center;
+            padding: clamp(8rem, 15vh, 12rem) var(--container-padding);
+
+            /* margin-bottom: 50px; */
+            /* padding:220px 0px; */
+
+            position: relative;
+            background: linear-gradient(rgba(15, 61, 46, 0.4), rgba(15, 61, 46, 0.4)), 
+                        url("https://i.ibb.co/pBKjDDrG/DISCLAIMER.png") no-repeat center center/cover;
+            width: 100vw;
+            min-height:80vh;
+            margin-left: calc(-50vw + 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(15, 61, 46, 0.1) 0%, rgba(200, 184, 138, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .header h1,
+        .header p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            max-width: 640px;
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        /* Simplified content sections without complex animations */
+        .content-wrapper {
+            padding: var(--section-spacing) var(--container-padding);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        /* .header p{
+            margin-top: 100px;
+        } */
+        .section {
+            padding: clamp(1.5rem, 4vw, 2.5rem) 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(1rem, 3vw, 2rem);
+            border-bottom: 1px solid rgba(200, 184, 138, 0.2);
+            margin-bottom: var(--section-spacing);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            border-radius: 8px;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+
+        .section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* Simplified icon styling without animations */
+        .icon {
+            width: clamp(60px, 8vw, 80px);
+            height: clamp(60px, 8vw, 80px);
+            background: linear-gradient(135deg, var(--gold) 0%, #d4c49a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(200, 184, 138, 0.3);
+        }
+
+        .icon svg {
+            width: clamp(30px, 5vw, 40px);
+            height: clamp(30px, 5vw, 40px);
+            fill: var(--deep-green);
+        }
+
+        /* Simplified list items with only text fade-in animation */
+        .content li {
+            margin-bottom: 1rem;
+            font-family: "Serotiva-Regular";
+            font-size: 22px;
+            line-height: 1.7;
+            color: var(--deep-green);
+            position: relative;
+            padding-left: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) .content li:nth-child(1) { animation-delay: 0.4s; }
+        .section:nth-child(1) .content li:nth-child(2) { animation-delay: 0.5s; }
+        .section:nth-child(1) .content li:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(2) .content li:nth-child(1) { animation-delay: 0.6s; }
+        .section:nth-child(2) .content li:nth-child(2) { animation-delay: 0.7s; }
+        .section:nth-child(2) .content li:nth-child(3) { animation-delay: 0.8s; }
+        .section:nth-child(3) .content li:nth-child(1) { animation-delay: 0.8s; }
+
+        .content li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Simplified section titles with basic text animation */
+        .content h2 {
+            font-family: "Serotiva-Bold";
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            line-height: 1.3;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--deep-green);
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Simplified final note with basic text animations */
+        .final-note {
+            margin-top: var(--section-spacing);
+            padding: var(--section-spacing) 0;
+            border-top: 2px solid var(--gold);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(200, 184, 138, 0.05) 0%, rgba(15, 61, 46, 0.1) 100%);
+            border-radius: 12px;
+            padding: clamp(2rem, 5vw, 3rem);
+        }
+
+        .final-note h3 {
+            font-family: "Serotiva-Bold";
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            line-height: 1.3;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .final-note p {
+            font-family: "Serotiva-Regular";
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            line-height: 1.6;
+            color: var(--deep-green);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 1.2s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Improved mobile responsive design with better breakpoints */
+        @media (max-width: 768px) {
+            .header {
+                padding: clamp(6rem, 12vh, 8rem) 1.5rem;
+                background: linear-gradient(rgba(15, 61, 46, 0.4), rgba(15, 61, 46, 0.4)), 
+                            url("https://i.ibb.co/21kNjRg5/DISCLAIMER-Mob.png") no-repeat center center/cover;
+                min-height: 70vh;
+            }
+
+            /* Added mobile paragraph font size */
+            p {
+                font-size: 18px;
+            }
+
+            .content-wrapper {
+                padding: 0.5rem 35px;
+            }
+
+            .section {
+                gap: 1.25rem;
+                padding: 1.5rem 0;
+            }
+
+            .icon {
+                width: 60px;
+                height: 60px;
+            }
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .icon svg {
+                width: 30px;
+                height: 30px;
+                width: 60px;
+                height:35px;
+            }
+            .header h1{
+                font-size: 2.5rem;
+            }
+
+            .content h2 {
+                font-size: 1.2rem;
+            }
+
+            .content li {
+                font-size: 18px;
+                line-height: 26px;
+                margin-bottom: 10px;
+            }
+
+            .final-note h3 {
+                font-size: 1.1rem;
+            }
+
+            .final-note p {
+                font-size: 18px;
+                line-height: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: clamp(5rem, 10vh, 7rem) 1rem;
+                min-height: 60vh;
+            }
+
+            /* Added small mobile paragraph font size */
+            p {
+                font-size: 18px;
+            }
+
+            .content-wrapper {
+                padding: 0.5rem 3rem;
+            }
+
+            .section {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+                padding: 1.25rem 0;
+            }
+
+            .icon {
+                align-self: flex-start;
+                width: 50px;
+                height: 50px;
+            }
+
+            .icon svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            .content {
+                padding-left: 0;
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .header p {
+                font-size: 1rem;
+                line-height: 24px;
+                padding: 0px 20px;
+            }
+
+            .content li {
+                padding-left:1px;
+                margin-bottom: 0.875rem;
+                font-size: 18px;
+            }
+
+            .final-note {
+                padding: 1.5rem 1rem;
+                margin-top: 2rem;
+            }
+        }
+
+        /* Added focus states for better accessibility */
+        .icon:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* Improved print styles */
+        @media print {
+            .header {
+                background: var(--deep-green) !important;
+                color: white !important;
+                padding: 2rem !important;
+            }
+            
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Only keeping essential text animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="navbar"></div>
+    </nav>
+    
+    <div class="header">
+        <h1>DISCLAIMER</h1>
+        <p>Our responsibility in sourcing, references & educational intent.</p>
+    </div>
+
+    <div class="container-main">
+         Added content wrapper for better spacing control 
+        <div class="content-wrapper">
+            <div class="section">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                </div>
+                <div class="content">
+                    <h2>Qur'an & Hadith References</h2>
+                    <ul>
+                        <li>All Qur'anic verses are sourced with standard numbering systems.</li>
+                        <li>Translations are provided for accessibility, yet depending the narrator. For peace, making, residue meanings, we encourage Bait Mahal display).</li>
+                        <li>Hadith materials are taken from authenticated collections (eg. Sahih al-Bukhari, Sahih Muslim).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                </div>
+                <div class="content">
+                    <h2>Scholarly Sources</h2>
+                    <ul>
+                        <li>Where interpretations or commentary provided, these are graded scholars or principles that are based on be reputable teachings of qualified scholars.</li>
+                        <li>Any opinions or submissive standpoints, mainstream sums scholarship and the principles of 'Ilm al-Jarh wa'l-ta'dil.</li>
+                        <li>Including scholars' names, features or writings does not imply endorsement taken from their knowledge in specific areas.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5,3H7V5H5V10A2,2 0 0,0 7,12H10V10A2,2 0 0,0 8,8V3A2,2 0 0,1 10,1H21C22.1 5 23 5.9 23 7V9C23 10.1 22.1 11 21 11S19 10.1 19 9V7.5L5 7V9C5 10.1 4.1 11 3 11S1 10.1 1 9V7C1 5.9 1.9 5 3 5H21C22.1 5 23 5.9 23 7V9C23 10.1 22.1 11 21 11S19 10.1 19 9ZM12 13.5C14.21 13.5 16 15.29 16 17.5V22H8V17.5C8 15.29 9.79 13.5 12 13.5Z"/>
+                    </svg>
+                </div>
+                <div class="content">
+                    <h2>Educational Purpose Only</h2>
+                    <ul>
+                        <li>All content on this platform is for educational and spiritual benefit or should not be advisor or as substitute for direct consultation with qualified scholars in matters of Islamic jurisprudence.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="final-note">
+                <h3>Final Note</h3>
+                <p>Zuhd Guidance strives to present knowledge with sincerity. If you initial any feedback or that corrections.</p>
+            </div>
+        </div>
+    </div>
+    
+     Simplified footer without complex animations 
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>zuhd Academy</h3>
+                    <ul>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('About ZUHD')"
+                  >About ZUHD</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/zuhd-lectures.html"
+                  onclick="linkClick('ZUHD Lectures')"
+                  >ZUHD Lectures</a
+                >
+              </li>
+              <li>
+                <a href="/desclimer.html" onclick="linkClick('Disclaimer')"
+                  >Disclaimer</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/after-school-classes.html"
+                  onclick="linkClick('After School Classes')"
+                  >After School Classes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  onclick="linkClick('Terms and conditions')"
+                  >Terms and conditions</a
+                >
+              </li>
+            </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/store.html" onclick="linkClick('zuhd Store')">zuhd Store</a></li>
+                        <li><a href="/donate.html" onclick="linkClick('Donate Now')">Donate Now</a></li>
+                        <li><a href="/ziyarat.html" onclick="linkClick('Ziyarat')">Ziyarat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="/our-story.html" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="/blog.html" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="/about.html" onclick="linkClick('About Us')">About Us</a></li>
+                        <li><a href="/contact.html" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <!-- <li><a href="/faq.html" onclick="linkClick('FAQ')">FAQ's</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h3>Stay Connected to Guidance</h3>
+                    <p>Be the first to receive Islamic guidance, inspiring articles, and special offers—only from ZUHD.</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">→</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/zuhd.au" class="social-link" onclick="socialClick('Facebook')" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/zuhd_au" class="social-link" onclick="socialClick('Instagram')" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@zuhd.store" class="social-link" onclick="socialClick('TikTok')" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@zuhdau" class="social-link" onclick="socialClick('YouTube')" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Zuhd Guidance All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="navbar.js"></script>
+</body>
+</html>

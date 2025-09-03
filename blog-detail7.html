@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Understanding Qadr – Finding Peace in Allah's Plan | Zuhd Maktab</title>
+    <style>
+:root {
+  --gold: #c89b3c;
+  --beige: #f5f2e9;
+  --cream: #fffaf0;
+  --deep-green: #0f3d2e;
+}
+
+@font-face {
+  font-family: "Serotiva-Black";
+  src: url(./font/OpenType-TT/Serotiva-Black.ttf);
+}
+
+@font-face {
+  font-family: "Serotiva-Bold";
+  src: url(./font/OpenType-TT/Serotiva-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Serotiva-Light";
+  src: url(./font/OpenType-TT/Serotiva-Light.ttf);
+}
+
+@font-face {
+  font-family: "Serotiva-Regular";
+  src: url(./font/OpenType-TT/Serotiva-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
+  line-height: 1.6;
+  color: #0c0d0e;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: relative;
+  height: 80vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://i.ibb.co/SD1Zszym/Consistency-in-Salah-Tips-for-the-Busy-Muslim.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0; /* keep background lowest */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1; /* overlay above background */
+}
+
+.hero-title {
+  position: relative;
+  font-size: 3rem;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  padding: 0 1rem;
+  width: 800px;
+  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+  line-height: 60px;
+  text-transform: uppercase;
+  z-index: 2; /* content above overlay */
+  font-family: "Serotiva-Black";
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.75rem;
+  }
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.article-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.article-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #064e3b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-family: "Serotiva-Bold";
+}
+
+@media (min-width: 768px) {
+  .article-title {
+    font-size: 3rem;
+  }
+}
+
+.article-date {
+  color: #4b5563;
+  font-size: 1.125rem;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #064e3b;
+  margin-bottom: 1.5rem;
+  font-family: "Serotiva-Bold";
+}
+
+.section-content {
+  color: #1f2937;
+  line-height: 1.75;
+}
+
+.section-content p {
+  margin-bottom: 1rem;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: "Serotiva-Regular";
+}
+
+/* Quick Reminders List */
+.quick-list {
+  list-style: decimal;
+  list-style-position: inside;
+  padding-left: 1rem;
+  color: #1f2937;
+  font-family: "Serotiva-Regular";
+}
+
+.quick-list li {
+  margin-bottom: 0.5rem;
+  font-family: "Serotiva-Regular";
+  font-size: 20px;
+}
+
+/* Tip Cards */
+.tip-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.tip-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.tip-title {
+  font-weight: bold;
+  color: #064e3b;
+  font-size: 28px;
+  margin-bottom: 0.75rem;
+  font-family: "Serotiva-Bold";
+}
+
+.tip-description {
+  color: #1f2937;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-family: "Serotiva-Regular";
+}
+
+.verse-box {
+  background-color: #dbeafe;
+  border-left: 4px solid #20492a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-family: "Serotiva-Regular";
+}
+
+.tip-box {
+  background-color: #dcfce7;
+  border-left: 4px solid #c5b17a;
+  padding: 1rem;
+  font-family: "Serotiva-Regular";
+}
+
+.verse-box strong,
+.tip-box strong {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Serotiva-Regular";
+}
+
+/* Back Link */
+.back-link-container {
+  text-align: center;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #0f3d2e;
+  color: #020202;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: "Serotiva-regular";
+}
+
+.back-link:hover {
+  background-color: #0f3d2e;
+  color: white;
+}
+
+.arrow-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Links */
+a {
+  color: #0f3d2e;
+  text-decoration: none;
+  font-family: "Serotiva-regular";
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.conclusion-links a {
+  margin-left: 0.25rem;
+}
+
+@media (min-width: 480px) {
+  .article-title {
+    font-size: 3rem;
+  }
+}
+
+/* Mobile Responsive Media Queries */
+
+/* Extra Small Devices (phones, 320px and up) */
+@media (max-width: 480px) {
+  /* Adding mobile-first responsive styles */
+  .hero-banner {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    width: 100%;
+    max-width: 300px;
+    line-height: 1.3;
+    padding: 0 0.5rem;
+  }
+
+  .main-content {
+    padding: 2rem 1rem;
+  }
+
+  .article-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-content p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0.75rem;
+  }
+
+  .quick-list li {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .tip-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tip-title {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+  }
+
+  .tip-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .verse-box,
+  .tip-box {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .verse-box strong,
+  .tip-box strong {
+    font-size: 16px;
+  }
+
+  .back-link {
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+  }
+}
+
+/* Small Devices (landscape phones, 481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  /* Styles for small landscape devices */
+  .hero-banner {
+    height: 70vh;
+    min-height: 350px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    width: 100%;
+    max-width: 500px;
+    line-height: 1.2;
+  }
+
+  .main-content {
+    padding: 3rem 1.25rem;
+  }
+
+  .article-title {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-content p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .quick-list li {
+    font-size: 18px;
+  }
+
+  .tip-title {
+    font-size: 24px;
+  }
+
+  .tip-description {
+    font-size: 17px;
+  }
+}
+
+/* Medium Devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Tablet-specific optimizations */
+  .hero-title {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .main-content {
+    max-width: 900px;
+    padding: 3.5rem 2rem;
+  }
+
+  .tip-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .article-title {
+    font-size: 2.75rem;
+  }
+}
+
+/* Large Devices (desktops, 992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Desktop optimizations */
+  .main-content {
+    max-width: 1000px;
+  }
+
+  .tip-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Large desktop enhancements */
+  .tip-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .main-content {
+    padding: 5rem 2rem;
+  }
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Landscape phone optimizations */
+  .hero-banner {
+    height: 100vh;
+    min-height: 400px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}
+
+/* High DPI/Retina Display Adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Retina display optimizations */
+  .hero-bg {
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="navbar"></div>
+    </nav>
+
+    <div class="min-h-screen">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <h1 class="hero-title">Understanding Qadr – Finding Peace in Allah's Plan</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <article>
+                <header class="article-header">
+                    <h1 class="article-title">
+                        Understanding Qadr – Finding Peace in Allah's Plan
+                    </h1>
+                    <p class="article-date">
+                        <strong>Date:</strong> August 27, 2025
+                    </p>
+                </header>
+
+                <!-- Introduction -->
+                <section class="section">
+                    <h2 class="section-title">Introduction</h2>
+                    <div class="section-content">
+                        <p>
+                            Belief in Qadr (Divine Decree) is one of the six pillars of faith in Islam. It is the conviction that everything—good or bad, ease or hardship—happens by the will and wisdom of Allah ﷻ. For many, Qadr is one of the most challenging aspects of faith to understand, yet it is also the key to inner peace.
+                        </p>
+                        <p>
+                            The Qur'an and Sunnah teach us that accepting Allah's plan brings comfort to the heart, prevents despair, and strengthens patience. In this article, we will explore the meaning of Qadr, its wisdom, and how to find peace in Allah's decree through Qur'anic verses and authentic Ahadith from Sahih Bukhari, Sahih Muslim, and Sunan al-Tirmidhi.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Quick Reminders -->
+                <section class="section">
+                    <h2 class="section-title">Carousel Snapshot (Quick Reminders)</h2>
+                    <ol class="quick-list">
+                        <li>Belief in Qadr is Part of Iman</li>
+                        <li>Everything Happens for a Wisdom</li>
+                        <li>Qadr Does Not Negate Effort</li>
+                        <li>Trials are a Test of Faith</li>
+                        <li>Finding Peace in Allah's Plan</li>
+                    </ol>
+                </section>
+
+                <!-- Tips -->
+                <section class="tip-cards" id="tipCards">
+                </section>
+
+                <!-- Conclusion -->
+                <section class="section">
+                    <h2 class="section-title">Conclusion</h2>
+                    <div class="section-content">
+                        <p>
+                            Understanding Qadr is not about knowing every detail of Allah's decree but about trusting His wisdom. When we accept Qadr, we free ourselves from constant anxiety and instead gain contentment in Allah's plan. The Qur'an and Sunnah remind us that Qadr includes both good and trials, but for the believer, both are ultimately a source of reward.
+                        </p>
+                        <p>
+                            By believing in Qadr, striving with effort, and showing patience in hardship, we can find peace in every stage of life. May Allah grant us hearts that are firm in faith, content with His decree, and always grateful in ease and hardship. Ameen.
+                        </p>
+                        <p><strong>🌿 Stay spiritually inspired with daily reminders at: Zuhd AU</strong></p>
+                        <p class="conclusion-links">
+                            🔗 Website:
+                            <a href="https://www.zuhd.au/">https://www.zuhd.au/</a>
+                            | ▶ YouTube:
+                            <a href="https://www.youtube.com/@zuhdau">Zuhd AU Channel</a>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Back Link -->
+                <div class="back-link-container">
+                    <a href="/blog.html" class="back-link">
+                        <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to All Articles
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>zuhd Academy</h3>
+                    <ul>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('About ZUHD')"
+                  >About ZUHD</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/zuhd-lectures.html"
+                  onclick="linkClick('ZUHD Lectures')"
+                  >ZUHD Lectures</a
+                >
+              </li>
+              <li>
+                <a href="/desclimer.html" onclick="linkClick('Disclaimer')"
+                  >Disclaimer</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/after-school-classes.html"
+                  onclick="linkClick('After School Classes')"
+                  >After School Classes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  onclick="linkClick('Terms and conditions')"
+                  >Terms and conditions</a
+                >
+              </li>
+            </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/store.html" onclick="linkClick('zuhd Store')">zuhd Store</a></li>
+                        <li><a href="/donate.html" onclick="linkClick('Donate Now')">Donate Now</a></li>
+                        <li><a href="/ziyarat.html" onclick="linkClick('Ziyarat')">Ziyarat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="/our-story.html" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="/blog.html" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="/about.html" onclick="linkClick('About Us')">About Us</a></li>
+                        <li><a href="/contact.html" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <!-- <li><a href="/faq.html" onclick="linkClick('FAQ')">FAQ's</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h3>Stay Connected to Guidance</h3>
+                    <p>Be the first to receive Islamic guidance, inspiring articles, and special offers—only from ZUHD.</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">→</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/zuhd.au" class="social-link" onclick="socialClick('Facebook')" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/zuhd_au" class="social-link" onclick="socialClick('Instagram')" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@zuhd.store" class="social-link" onclick="socialClick('TikTok')" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@zuhdau" class="social-link" onclick="socialClick('YouTube')" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Zuhd Guidance All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const tips = [
+            {
+                number: 1,
+                title: "🌿 Belief in Qadr is Part of Iman",
+                description: "Faith is incomplete without believing that everything occurs by Allah's decree.",
+                verse: {
+                    type: "Qur'an",
+                    text: "Indeed, all things We created with predestination.",
+                    reference: "Qur'an 54:49"
+                },
+                tip: "Remind yourself daily that even the smallest matters—like a leaf falling or a delay in plans—are all under Allah's knowledge and will."
+            },
+            {
+                number: 2,
+                title: "🕋 Everything Happens for a Wisdom",
+                description: "Nothing in this world happens by accident; every event has divine wisdom, even if we do not understand it immediately.",
+                verse: {
+                    type: "Qur'an",
+                    text: "Perhaps you hate a thing and it is good for you; and perhaps you love a thing and it is bad for you. Allah knows, while you know not.",
+                    reference: "Qur'an 2:216"
+                },
+                tip: "When faced with trials, shift your perspective: instead of asking \"Why me?\", ask \"What can I learn from this?\""
+            },
+            {
+                number: 3,
+                title: "🌙 Qadr Does Not Negate Effort",
+                description: "Belief in Qadr does not mean we sit idle. Islam teaches us to work hard while relying upon Allah.",
+                verse: {
+                    type: "Qur'an",
+                    text: "And that there is not for man except that [good] for which he strives.",
+                    reference: "Qur'an 53:39"
+                },
+                tip: "Put your best effort into studies, work, and family life, then trust Allah with the results, knowing nothing is outside His plan."
+            },
+            {
+                number: 4,
+                title: "🤲 Trials are a Test of Faith",
+                description: "Calamities are not a sign of Allah's anger but a way of purifying the believer and raising his rank.",
+                verse: {
+                    type: "Qur'an",
+                    text: "And We will surely test you with something of fear and hunger and a loss of wealth and lives and fruits, but give good tidings to the patient.",
+                    reference: "Qur'an 2:155"
+                },
+                tip: "When struck with hardship, remember it is an expiation of sins and an opportunity to earn reward through patience."
+            },
+            {
+                number: 5,
+                title: "💡 Finding Peace in Allah's Plan",
+                description: "True peace comes when we accept that what reaches us was never meant to miss us, and what misses us was never meant to reach us.",
+                verse: {
+                    type: "Qur'an",
+                    text: "No disaster strikes upon the earth or among yourselves except that it is in a register before We bring it into being – indeed that, for Allah, is easy – so that you may not grieve over what has eluded you nor exult [pridefully] over what He has given you.",
+                    reference: "Qur'an 57:22-23"
+                },
+                tip: "Train your heart to say Alhamdulillah in every situation—whether in blessings or tests—so your faith remains unshaken."
+            }
+        ];
+
+        // Function to create tip card HTML
+        function createTipCard(tip) {
+            const tipType = tip.tipType || 'tip';
+            const tipLabel = tipType === 'reflection' ? 'Reflection' : 'Tip';
+
+            return `
+                <div class="tip-card">
+                    <div class="tip-title">
+                        ${tip.number}. ${tip.title}
+                    </div>
+                    <p class="tip-description">${tip.description}</p>
+
+                    <div class="verse-box">
+                        <strong>${tip.verse.type}:</strong> ${tip.verse.text} (${tip.verse.reference})
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>${tipLabel}:</strong> ${tip.tip}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generate all tip cards
+        function generateTipCards() {
+            const tipCardsContainer = document.getElementById('tipCards');
+            const tipCardsHTML = tips.map(tip => createTipCard(tip)).join('');
+            tipCardsContainer.innerHTML = tipCardsHTML;
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', generateTipCards);
+
+        // footer js 
+        // Mobile accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerColumns = document.querySelectorAll('.footer-column:not(.newsletter)');
+
+            footerColumns.forEach(column => {
+                const header = column.querySelector('h3');
+
+                header.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        column.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    footerColumns.forEach(column => {
+                        column.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        // Analytics functions (placeholder implementations)
+        function linkClick(linkName) {
+            console.log('Link clicked:', linkName);
+            // Analytics tracking would go here
+        }
+
+        function socialClick(platform) {
+            console.log('Social media clicked:', platform);
+            // Analytics tracking would go here
+        }
+
+        function submitNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            console.log('Newsletter subscription:', email);
+            alert('Thank you for subscribing! (This is a demo)');
+            event.target.reset();
+        }
+    </script>
+
+    <script src="navbar.js"></script>
+    <script src="/cacheBuster.js"></script>
+
+</body>
+</html>

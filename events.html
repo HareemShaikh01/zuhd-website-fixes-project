@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events - Zuhd Maktab</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --deep-green: #0f3d2e;
+        --sand-beige: #f7efe5;
+        --gold: #c8b88a;
+        --white: #ffffff;
+        --off-white: #f9f9f9;
+        --dark-text: #333333;
+        --light-text: #666666;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--sand-beige);
+        color: var(--dark-text);
+        line-height: 1.6;
+      }
+
+      .arabic {
+        font-family: "Amiri", serif;
+      }
+
+      /* Header Styles */
+      .hero-section {
+        height: 90vh;
+        background-image: url("https://i.ibb.co/p6J1SHN1/02-Events-1920x500.png");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        padding: 0 20px;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        z-index: 2;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+        max-width: 600px;
+        font-weight: 700;
+        line-height: 60px;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-subtitle {
+        font-size: 1.4rem;
+        margin: 40px 0px;
+        font-weight: 300;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--gold);
+        color: var(--deep-green);
+        padding: 15px 35px;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+
+      .cta-button:hover {
+        background-color: var(--deep-green);
+        color: var(--gold);
+        transform: translateY(-3px);
+      }
+
+      /* Featured Event */
+      .featured-event {
+        max-width: 1200px;
+        margin: 50px auto 80px;
+        position: relative;
+        z-index: 3;
+        padding: 0 20px;
+      }
+
+      .featured-card {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        padding: 100px;
+        color: var(--white);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .featured-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .featured-title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .event-meta {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--white);
+      }
+
+      .meta-icon {
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+
+      .featured-cta {
+        background-color: var(--deep-green);
+        color: var(--white);
+        border: none;
+        padding: 15px 35px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .featured-cta:hover {
+        background-color: var(--gold);
+        color: var(--deep-green);
+      }
+
+      /* Community Integration */
+      .community-section {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .instagram-feed {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+
+      .instagram-post {
+        width: 200px;
+        height: 200px;
+        background-color: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .instagram-post:hover {
+        transform: scale(1.05);
+      }
+
+      .instagram-post img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .whatsapp-cta {
+        background-color: var(--deep-green);
+        color: var(--white);
+        padding: 30px;
+        border-radius: 15px;
+        margin-top: 50px;
+        position: relative;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--deep-green);
+        color: var(--white);
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--gold);
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer-column a {
+        color: #e0e0e0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-column a:hover {
+        color: var(--gold);
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-top: 15px;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        font-family: inherit;
+      }
+
+      .newsletter-form button {
+        padding: 0 20px;
+        background-color: var(--gold);
+        color: var(--deep-green);
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: center;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: background-color 0.3s ease;
+      }
+
+      .social-link:hover {
+        background-color: var(--gold);
+        color: var(--deep-green);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: #1c1c1c;
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--gold);
+      }
+
+      /* Grid - exactly 3 equal columns */
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0px auto 100px;
+      }
+
+      .event-card {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        height: 420px; /* fixed height for equal cards */
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .event-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        transition: transform 0.5s ease;
+      }
+
+      .event-card:hover .card-image {
+        transform: scale(1.05);
+      }
+
+      .card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%; /* cover entire card for full gradient */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 24px;
+        background: linear-gradient(
+          to top,
+          rgb(2, 26, 14) 20%,
+          /* deep green at bottom */ rgba(0, 22, 11, 0.747) 50%,
+          /* mid-fade */ rgba(0, 40, 20, 0) 80% /* transparent top */
+        );
+        color: #fff;
+        z-index: 1;
+        border-radius: 16px;
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .card-meta {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      .card-meta-item {
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+        color: white;
+      }
+
+      .card-meta-item i {
+        margin-right: 8px;
+        color: #c8b88a;
+      }
+
+      .card-cta {
+        display: inline-block;
+        padding: 10px 18px;
+        border: 2px solid #c8b88a;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .card-cta:hover {
+        background: var(--deep-green);
+      }
+
+      /* past events */
+      #past-events {
+        background: var(--deep-green);
+        padding: 50px 20px 20px;
+        color: var(--white);
+      }
+
+      #past-events .event-card {
+        border: 2px solid var(--gold);
+      }
+
+      #past-events h2 {
+        color: var(--gold);
+      }
+
+      .event-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #e63946;
+        color: white;
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 4px;
+      }
+      .event-card {
+        position: relative;
+      }
+      .extra-events.hidden {
+        display: none;
+      }
+      .show-more-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .events-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .events-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-card {
+          padding: 50px 20px;
+        }
+
+        .event-meta {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .featured-card {
+          padding: 30px 20px;
+        }
+
+        .featured-title {
+          font-size: 2rem;
+        }
+
+        .footer-top {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .footer-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .newsletter-form input {
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+
+        .newsletter-form button {
+          border-radius: 5px;
+          width: 100%;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .instagram-post {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body class="events-page">
+    <!-- Navbar placeholder -->
+    <nav>
+      <div id="navbar"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Upcoming Events & Community Gatherings</h1>
+        <p class="hero-subtitle">
+          Join us in strengthening faith, unity, and knowledge.
+        </p>
+        <a href="#upcoming-events" class="cta-button">See Upcoming Events</a>
+      </div>
+    </section>
+
+    <!-- Featured Event -->
+    <section class="featured-event">
+      <div class="featured-card">
+        <h2 class="featured-title">Melton Masjid Fundraiser</h2>
+        <div class="event-meta">
+          <div class="meta-item">
+            <i class="fas fa-calendar-alt meta-icon"></i>
+            <span>Saturday, May 18, 2024</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-clock meta-icon"></i>
+            <span>6:00 PM - 10:00 PM</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-map-marker-alt meta-icon"></i>
+            <span>Melton, VIC</span>
+          </div>
+        </div>
+        <a class="cta-button">Register Now</a>
+      </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="events-section" id="upcoming-events">
+      <h2 class="section-title">Upcoming Events</h2>
+      <div class="events-grid" id="upcoming-events-container">
+        <!-- Events will be dynamically inserted here -->
+      </div>
+      <div class="show-more-wrapper">
+        <button id="show-more-upcoming" class="cta-button">Show More</button>
+      </div>
+    </section>
+
+    <!-- Past Events -->
+    <section id="past-events">
+      <div class="past-events-container">
+        <h2 class="section-title">Past Events</h2>
+
+        <div class="events-grid" id="past-events-container">
+          <!-- Past events will be dynamically inserted here -->
+        </div>
+        <div class="show-more-wrapper">
+          <button id="show-more-past" class="cta-button">Show More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Integration -->
+    <section class="community-section">
+      <h2 class="section-title">Join Our Community</h2>
+
+      <div class="instagram-feed">
+        <div class="instagram-post">
+          <img
+            src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Instagram Post"
+          />
+        </div>
+        <div class="instagram-post">
+          <img
+            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Instagram Post"
+          />
+        </div>
+        <div class="instagram-post">
+          <img
+            src="https://images.unsplash.com/photo-1581578021517-5d8ad8597852?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Instagram Post"
+          />
+        </div>
+        <div class="instagram-post">
+          <img
+            src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Instagram Post"
+          />
+        </div>
+      </div>
+
+      <div class="whatsapp-cta">
+        <h3>Stay updated on upcoming events</h3>
+        <p>Join our WhatsApp community group for instant updates</p>
+        <br />
+        <button class="cta-button">Join WhatsApp Group</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-column">
+            <h3>zuhd Academy</h3>
+            <ul>
+              <li><a href="/about-zuhd.html">About ZUHD</a></li>
+              <li><a href="/zuhd-lectures.html">ZUHD Lectures</a></li>
+              <li>
+                <a href="/after-school-classes.html">After School Classes</a>
+              </li>
+              <li><a href="/terms.html">Terms and conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/store.html">zuhd Store</a></li>
+              <li><a href="/donate.html">Donate Now</a></li>
+              <li><a href="/ziyarat.html">Ziyarat</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><a href="/our-story.html">Our Story</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/about.html">About Us</a></li>
+              <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column newsletter">
+            <h3>Stay Connected to Guidance</h3>
+            <p>
+              Be the first to receive Islamic guidance, inspiring articles, and
+              special offers—only from ZUHD.
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">→</button>
+            </form>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/zuhd.au"
+                class="social-link"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/zuhd_au"
+                class="social-link"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@zuhd.store"
+                class="social-link"
+                title="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@zuhdau"
+                class="social-link"
+                title="YouTube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2024 Zuhd Guidance All rights reserved.</div>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Refund Policy</a>
+            <a href="#">Accessibility Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Event data - can be moved to external JSON file for better maintainability
+      const upcomingEvents = [
+        {
+          title: "Before the Trumpet: A World on the Edge",
+          date: "20 Sep 2025 (Saturday)",
+          location: "Australian Islamic College, Perth",
+          image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DNWtcEbzIMw/?img_index=1"
+        },
+        {
+          title: "Before the Trumpet: A World on the Edge",
+          date: "21 Sep 2025 (Sunday)",
+          location: "Islamic College of Brisbane",
+          image: "https://images.unsplash.com/photo-1581578021517-5d8ad8597852?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DNWv6s6TDP2/?img_index=1"
+        },
+        {
+          title: "Before the Trumpet: A World on the Edge",
+          date: "27 Sep 2025 (Saturday)",
+          location: "Bankstown Sports Club, Sydney",
+          image: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DNWxhkEzjOR/?img_index=1"
+        },
+        {
+          title: "Before the Trumpet: A World on the Edge",
+          date: "28 Sep 2025 (Sunday)",
+          location: "Almas Receptions, Melbourne",
+          image: "https://images.unsplash.com/photo-1580153434318-6a13e5c3f6cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DNWzAVxzw3X/?img_index=1"
+        },
+        {
+          title: "Palestine National Day 2025",
+          date: "8 Nov 2025 (Friday)",
+          location: "Federation Square, Melbourne",
+          image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "#"
+        },
+        {
+          title: "Victoria Spring Festival",
+          date: "28–30 Nov 2025 (Fri–Sun)",
+          location: "Melton Police Paddock",
+          image: "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "#"
+        },
+        {
+          title: "5th Annual Seerah Conference",
+          date: "21 Sep 2025 (Sunday)",
+          location: "Keysborough Mosque",
+          image: "https://images.unsplash.com/photo-1604014237744-5c194e7a89af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "#"
+        }
+      ];
+
+      const pastEvents = [
+        {
+          title: "SHAYKH MUFTI TAUQEER Visit",
+          image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DM5X3SCSiFo/?img_index=1"
+        },
+        {
+          title: "Al Itqan Eid Carnival 2025",
+          image: "https://images.unsplash.com/photo-1581578021517-5d8ad8597852?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DIiV2xeS0hW/"
+        },
+        {
+          title: "Melton Eid fest",
+          image: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DId0pywy-Mi/"
+        },
+        {
+          title: "Eid show Melbourne",
+          image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DIOb3bASGjL/"
+        },
+        {
+          title: "Vmm Summer night market",
+          image: "https://images.unsplash.com/photo-1580153434318-6a13e5c3f6cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DDi7sssyAsF/"
+        },
+        {
+          title: "Maktab Point Cook End year jalsa",
+          image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          link: "https://www.instagram.com/p/DDd6Cnzyd39/"
+        }
+      ];
+
+      // Function to create event card HTML
+      function createEventCard(event, isPast = false) {
+        if (isPast) {
+          return `
+            <div class="event-card">
+              <img src="${event.image}" alt="${event.title}" class="card-image" />
+              <div class="card-content">
+                <h3 class="card-title">${event.title}</h3>
+                <a href="${event.link}" target="_blank" class="card-cta">
+                  View Photos
+                </a>
+              </div>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="event-card">
+              <img src="${event.image}" alt="${event.title}" class="card-image" />
+              <div class="card-content">
+                <h3 class="card-title">${event.title}</h3>
+                <div class="card-meta">
+                  <div class="card-meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>${event.date}</span>
+                  </div>
+                  <div class="card-meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${event.location}</span>
+                  </div>
+                </div>
+                <a href="${event.link}" ${event.link !== '#' ? 'target="_blank"' : ''} class="card-cta">
+                  Learn More
+                </a>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // Function to render events with show more/less functionality
+      function renderEvents(events, containerId, isPast = false, initialCount = 3) {
+        const container = document.getElementById(containerId);
+        const showMoreBtn = document.getElementById(`show-more-${isPast ? 'past' : 'upcoming'}`);
+        
+        // Clear container
+        container.innerHTML = '';
+        
+        // Render initial events
+        const eventsToShow = events.slice(0, initialCount);
+        eventsToShow.forEach(event => {
+          container.innerHTML += createEventCard(event, isPast);
+        });
+        
+        // Set up show more/less functionality
+        let showingAll = events.length <= initialCount;
+        
+        if (events.length > initialCount) {
+          showMoreBtn.style.display = 'block';
+          showMoreBtn.textContent = 'Show More';
+          
+          showMoreBtn.onclick = function() {
+            if (showingAll) {
+              // Show less
+              container.innerHTML = '';
+              events.slice(0, initialCount).forEach(event => {
+                container.innerHTML += createEventCard(event, isPast);
+              });
+              showMoreBtn.textContent = 'Show More';
+            } else {
+              // Show more
+              container.innerHTML = '';
+              events.forEach(event => {
+                container.innerHTML += createEventCard(event, isPast);
+              });
+              showMoreBtn.textContent = 'Show Less';
+            }
+            showingAll = !showingAll;
+          };
+        } else {
+          showMoreBtn.style.display = 'none';
+        }
+      }
+
+      // Initialize the page
+      document.addEventListener('DOMContentLoaded', function() {
+        // Render events
+        renderEvents(upcomingEvents, 'upcoming-events-container', false, 3);
+        renderEvents(pastEvents, 'past-events-container', true, 3);
+        
+        // WhatsApp CTA
+        const whatsappButton = document.querySelector(".whatsapp-cta button");
+        if (whatsappButton) {
+          whatsappButton.addEventListener("click", function() {
+            alert(
+              "You would be redirected to join our WhatsApp community group."
+            );
+          });
+        }
+      });
+    </script>
+
+    <script src="navbar.js"></script>
+    <script src="/cacheBuster.js"></script>
+  </body>
+</html>
