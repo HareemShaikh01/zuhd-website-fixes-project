@@ -5311,7 +5311,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             cursor: pointer;
             border-radius: 10px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
+            /* text-transform: uppercase; */
             margin-top: 30px;
         }
 

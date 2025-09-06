@@ -48,7 +48,6 @@
       .header-content p {
         font-size: 1.2rem;
         color: #ffffff;
-        /* opacity: 0.9; */
       }
 
       .zuhd-about-container {
@@ -68,7 +67,6 @@
         );
         border-radius: 15px;
         padding: clamp(30px, 6vw, 50px);
-        /* margin: 0 0 60px 0; */
         position: relative;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         color: var(--light-text);
@@ -114,17 +112,6 @@
         font-weight: 600;
       }
 
-      .ourFun {
-        font-size: 2.5rem;
-        margin: 70px auto;
-        position: relative;
-        display: inline-block;
-        color: var(--deep-green);
-        font-weight: 600;
-        text-align: center;
-        width: 100%;
-      }
-
       .zuhd-section-title::after {
         content: "";
         position: absolute;
@@ -151,73 +138,6 @@
       .vision-highlight {
         color: var(--light-gold);
         font-weight: 500;
-      }
-
-      /* About Sections */
-      .about-section {
-        display: flex;
-        align-items: center;
-        gap: clamp(20px, 4vw, 40px);
-        /* margin-bottom: 60px; */
-        padding: clamp(20px, 4vw, 30px);
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.5s ease-out;
-        will-change: opacity, transform;
-      }
-
-      .about-section.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .about-section.reverse {
-        flex-direction: row-reverse;
-      }
-
-      .about-image,
-      .about-image-f {
-        flex: 1;
-        max-width: 40%;
-        overflow: hidden;
-        border-radius: 15px;
-      }
-
-      .about-image img,
-      .about-image-f img {
-        width: 100%;
-        max-height: 500px;
-        object-fit: cover;
-        border-radius: 15px;
-        transition: transform 0.5s ease;
-      }
-
-      .about-image img:hover,
-      .about-image-f img:hover {
-        transform: scale(1.05);
-      }
-
-      .about-content {
-        flex: 1;
-        padding: clamp(10px, 3vw, 20px);
-        text-align: left;
-      }
-
-      .about-content h3 {
-        color: var(--deep-green);
-        font-size: 1.7rem;
-        margin-bottom: 15px;
-        font-weight: 500;
-      }
-
-      .about-content p {
-        color: #444;
-        line-height: 1.7;
-        font-size: 1.2rem;
-        margin-bottom: 15px;
       }
 
       .additional-lines {
@@ -277,6 +197,7 @@
       .hadith-content p {
         line-height: 1.7;
         font-size: 1.2rem;
+        margin-bottom: 15px;
       }
 
       .sunnah-image {
@@ -312,7 +233,6 @@
       }
 
       .fiqh-card {
-        /* background: #fff; */
         border-radius: 10px;
         padding: clamp(15px, 3vw, 20px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -327,6 +247,7 @@
         font-size: 1.5;
         color: var(--gold);
         margin-bottom: 10px;
+        font-weight: 600;
       }
 
       .course1 {
@@ -335,34 +256,270 @@
         line-height: 1.6;
       }
 
+      /* ===== FOUNDERS ===== */
+      .founders {
+        padding: 1px 10px 60px;
+        text-align: center;
+        /* background-color: var(--deep-green); */
+      }
+
+      .founders h2 {
+        font-size: 2.3rem;
+        color: var(--deep-green);
+        margin: 80px auto;
+      }
+
+      .founder-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .founder-card {
+        background: #fdfaf6;
+        padding: 30px 25px;
+        border-radius: 12px;
+        max-width: 550px;
+        flex: 1;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.281);
+        transition: transform 0.3s ease;
+      }
+
+      .founder-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .founder-card img {
+        width: 230px;
+        height: 230px;
+        margin-top: -100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #eee;
+        margin-bottom: 15px;
+      }
+
+      .founder-card h3 {
+        font-size: 1.7rem;
+        margin: 10px 0 5px;
+        color: var(--deep-green);
+      }
+
+      .founder-card h4 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #666;
+        margin: 5px 0 15px;
+      }
+
+      .founder-card p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #444;
+        margin-bottom: 20px;
+      }
+
+      .founder-card a {
+        display: block;
+        text-align: right;
+        font-size: 14px;
+        font-weight: bold;
+        color: #184d47;
+        text-decoration: none;
+        transition: color 0.3s;
+        cursor: pointer;
+      }
+
+      .founder-card a:hover {
+        color: var(--gold);
+      }
+
+      /* ===== MODAL (Updated Styling with Scroll) ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .modal-content {
+        background: #fff;
+        padding: 35px 25px;
+        border-radius: 20px;
+        max-width: 650px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        animation: scaleIn 0.35s ease;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Founder Image */
+      .modal-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px auto;
+        border: 5px solid #eee;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 35px;
+        z-index: 2;
+      }
+
+      /* Scrollable Content Container */
+      .modal-scroll {
+        overflow-y: auto;
+        max-height: calc(80vh - 250px);
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      /* Founder Name */
+      .modal-content h2 {
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: #184d47;
+        margin-bottom: 8px;
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Golden Divider */
+      .modal-divider {
+        width: 60px;
+        height: 3px;
+        background: #d9b68b;
+        margin: 12px auto 22px;
+        border-radius: 3px;
+      }
+
+      /* Founder Bio */
+      .modal-content p {
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.7;
+        text-align: justify;
+        margin: 0 10px;
+      }
+
+      .golden-divider {
+        border: none;
+        height: 3px;
+        width: 80%;
+        margin: 20px auto;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #c8b88a,
+          transparent
+        );
+        border-radius: 50px;
+      }
+
+      /* Close Button */
+      .close {
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #666;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .close:hover {
+        color: #184d47;
+        transform: scale(1.2);
+      }
+
+      /* Scrollbar Styling */
+      .modal-scroll::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .modal-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .modal-scroll::-webkit-scrollbar-thumb {
+        background: #d9b68b;
+        border-radius: 10px;
+      }
+
+      .modal-scroll::-webkit-scrollbar-thumb:hover {
+        background: #c8b88a;
+      }
+
+      /* Responsive adjustments for founders */
+      @media (max-width: 992px) {
+        .founder-container {
+          gap: 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .founder-container {
+          flex-direction: column;
+          align-items: center;
+          gap: 60px;
+        }
+        .founder-card {
+          max-width: 90%;
+          padding: 25px 15px;
+        }
+        .founder-card img {
+          width: 200px;
+          height: 200px;
+          margin-top: 0;
+        }
+        .founders h2 {
+          font-size: 2rem;
+          margin: 30px auto 50px;
+        }
+        .modal-content {
+          padding: 25px 15px;
+        }
+        .modal-img {
+          width: 150px;
+          height: 150px;
+        }
+        .modal-scroll {
+          max-height: calc(80vh - 220px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .founder-card img {
+          width: 180px;
+          height: 180px;
+          margin-top: 0px;
+        }
+        .modal-img {
+          width: 130px;
+          height: 130px;
+        }
+        .modal-scroll {
+          max-height: calc(80vh - 190px);
+        }
+      }
+
       /* Responsive Design */
       @media (max-width: 992px) {
         .zuhd-about-container {
           padding: clamp(20px, 5vw, 40px) clamp(10px, 3vw, 20px);
-        }
-
-        .about-section,
-        .about-section.reverse {
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .about-image,
-        .about-image-f {
-          max-width: 100%;
-          margin-bottom: 20px;
-        }
-
-        .about-image img,
-        .about-image-f img {
-          max-height: 350px;
-          width: 100%;
-          object-fit: cover;
-        }
-
-        .about-content {
-          padding: 0;
-          text-align: center;
         }
       }
 
@@ -379,23 +536,13 @@
           padding: clamp(20px, 4vw, 30px);
         }
 
-        .zuhd-section-title,
-        .ourFun {
+        .zuhd-section-title {
           font-size: 2.5rem;
-          /* margin-bottom: 20px; */
         }
 
         .zuhd-vision-text1 {
           font-size: 1.1;
           margin-bottom: 20px;
-        }
-
-        .about-content h3 {
-          font-size: 1.7rem;
-        }
-
-        .about-content p {
-          font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .additional-lines {
@@ -440,33 +587,6 @@
         .course1 {
           font-size: 1.2rem;
         }
-
-        /* .zuhd-timeline-section {
-                padding: 0 clamp(10px, 3vw, 20px);
-            } */
-
-        .zuhd-section-title2 {
-          font-size: 2.5rem;
-        }
-
-        /* .zuhd-timeline-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            } */
-
-        /* .zuhd-timeline-line {
-                display: none;
-            }
-
-            .zuhd-timeline-item {
-                width: 100%;
-            }
-
-            .zuhd-timeline-dot {
-                width: clamp(12px, 2vw, 16px);
-                height: clamp(12px, 2vw, 16px);
-            } */
       }
 
       @media (max-width: 576px) {
@@ -486,8 +606,7 @@
           padding: clamp(15px, 3vw, 20px);
         }
 
-        .zuhd-section-title,
-        .ourFun {
+        .zuhd-section-title {
           font-size: 2rem;
         }
 
@@ -495,25 +614,11 @@
           font-size: clamp(0.8rem, 1.8vw, 0.9rem);
         }
 
-        .about-image img,
-        .about-image-f img {
-          max-height: 300px;
-          width: 100%;
-          object-fit: cover;
-        }
-
-        .about-content h3 {
-          font-size: 1.4rem;
-        }
-
-        .about-content p {
-          font-size: 1rem;
-        }
-
         .additional-lines {
           padding: clamp(10px, 2vw, 15px);
           margin: clamp(20px, 4vw, 30px) 0;
         }
+
         .tawheed-heading {
           font-size: 2rem;
         }
@@ -541,30 +646,6 @@
         .course1 {
           font-size: 1rem;
         }
-
-        .zuhd-section-title2 {
-          font-size: clamp(1.5rem, 3vw, 1.8rem);
-        }
-
-        /* .zuhd-timeline-year {
-                font-size: clamp(0.9rem, 2vw, 1.2rem);
-            }
-
-            .zuhd-timeline-description {
-                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-            } */
-      }
-
-      /* Remove transform transitions for founder images */
-      .zuhd-founder-card,
-      .zuhd-founder-image-container,
-      .zuhd-founder-image {
-        transition: none !important;
-        transform: none !important;
-      }
-
-      .zuhd-founder-image:active {
-        transform: none !important;
       }
     </style>
   </head>
@@ -617,34 +698,134 @@
           of Islam.
         </p>
       </section>
-      <h2 class="ourFun">OUR FOUNDERS</h2>
-      <!-- Founder 1 Section -->
-      <section class="about-section reverse">
-        <div class="about-image-f">
-          <img src="founder1.png" alt="Ustadh Saad Al-Hashmi" />
+
+      <!-- FOUNDERS SECTION -->
+      <div class="founders">
+        <h2>Our Founders</h2>
+        <div class="founder-container">
+          <div class="founder-card">
+            <img src="founder1.png" alt="Saad" />
+            <h3>Ustadh Saad Al-Hashmi</h3>
+            <h4>Founder</h4>
+            <p>
+              Born in Jeddah, Saudi Arabia, Ustadh Saad Al-Hashmi pursued
+              Islamic studies primarily in the UAE and Jordan, learning under
+              esteemed scholars such as Dr. Sheikh Musa Furber, specialising in
+              Hanbali Fiqh. He also studied with Syrian scholars through the
+              Taibah Foundation and the UAE Awqaf, as well as other notable
+              ʿulema across various sciences of the deen.
+            </p>
+            <a
+              href="javascript:void(0);"
+              onclick="document.getElementById('modal-saad').style.display='flex'"
+              >Read More ></a
+            >
+          </div>
+
+          <div class="founder-card">
+            <img src="Photo 18-07-2025, 15 39 30.jpg" alt="Sami" />
+            <h3>Dr. Sami Al-Hashmi</h3>
+            <h4>Co-Founder</h4>
+            <p>
+              Born in Vienna, Austria, Dr. Sami Al-Hashmi earned a Master's in
+              Dental Surgery from the University of Otago, New Zealand, where he
+              graduated on a full academic scholarship. Alongside clinical
+              training, he actively engaged in community dental programs and
+              public health initiatives, embodying a commitment to service
+              beyond his profession.
+            </p>
+            <a
+              href="javascript:void(0);"
+              onclick="document.getElementById('modal-sami').style.display='flex'"
+              >Read More ></a
+            >
+          </div>
         </div>
-        <div class="about-content">
-          <h3>Ustadh Saad Al-Hashmi</h3>
-          <p>
-            Born in Jeddah, Saudi Arabia. Pursued Islamic studies primarily in
-            the UAE and Jordan, learning under esteemed scholars such as Dr.
-            Sheikh Musa Furber, specialising in Hanbali Fiqh. Studied with
-            Syrian scholars in the UAE through the Taibah Foundation and UAE
-            Awqaf, as well as other notable ulema across various sciences of the
-            deen.
-          </p>
-          <p>
-            Alongside his pursuit of sacred knowledge, Ustadh Saad is an
-            entrepreneur running multiple businesses. He co-founded Zuhd
-            Guidance and Zuhd Store with the vision to benefit the community,
-            support Islamic education, and strengthen the ummah’s connection to
-            knowledge. He plays a key role in establishing the Maktab at Point
-            Cook and has been instrumental in bringing leading scholars from
-            around the world to Australia, fostering learning, unity, and
-            inspiration.
-          </p>
+      </div>
+
+      <!-- MODALS -->
+      <div id="modal-saad" class="modal">
+        <div class="modal-content">
+          <span
+            class="close"
+            onclick="document.getElementById('modal-saad').style.display='none'"
+            >&times;</span
+          >
+          <img src="founder1.png" alt="Saad" class="modal-img" />
+          <div class="modal-scroll">
+            <h2>Ustadh Saad Al-Hashmi</h2>
+            <div class="golden-divider"></div>
+            <p>
+              Born in Jeddah, Saudi Arabia, Ustadh Saad Al-Hashmi pursued
+              Islamic studies primarily in the UAE and Jordan, learning under
+              esteemed scholars such as Dr. Sheikh Musa Furber, specialising in
+              Hanbali Fiqh. He also studied with Syrian scholars through the
+              Taibah Foundation and the UAE Awqaf, as well as other notable
+              ʿulema across various sciences of the deen.
+            </p>
+            <p>
+              Alongside his pursuit of sacred knowledge, Ustadh Saad is an
+              entrepreneur and community leader. He co-founded Zuhd Guidance and
+              Zuhd Store with a vision to benefit the community, support Islamic
+              education, and strengthen the Ummah's connection to knowledge and
+              identity.
+            </p>
+            <p>
+              He has played a key role in establishing the Maktab at Point Cook
+              in Melbourne, nurturing the next generation with strong Islamic
+              foundations. Ustadh Saad has also been instrumental in bringing
+              leading international scholars to Australia, fostering unity,
+              learning, and inspiration across communities. His leadership
+              ensures Zuhd remains a mission-driven movement that blends faith,
+              creativity, and community service.
+            </p>
+          </div>
         </div>
-      </section>
+      </div>
+
+      <div id="modal-sami" class="modal">
+        <div class="modal-content">
+          <span
+            class="close"
+            onclick="document.getElementById('modal-sami').style.display='none'"
+            >&times;</span
+          >
+          <img
+            src="Photo 18-07-2025, 15 39 30.jpg"
+            alt="Sami"
+            class="modal-img"
+          />
+          <div class="modal-scroll">
+            <h2>Dr. Sami Al-Hashmi</h2>
+            <div class="golden-divider"></div>
+            <p>
+              Born in Vienna, Austria, Dr. Sami Al-Hashmi earned a Master's in
+              Dental Surgery from the University of Otago, New Zealand, where he
+              graduated on a full academic scholarship. Alongside clinical
+              training, he actively engaged in community dental programs and
+              public health initiatives, embodying a commitment to service
+              beyond his profession.
+            </p>
+            <p>
+              While practicing dentistry, Dr. Sami deepened his spiritual
+              journey by pursuing Islamic studies at WISE University in Jordan,
+              building a foundation in traditional knowledge. His ability to
+              balance modern medical expertise with sacred learning enables him
+              to bridge science and faith with a holistic, compassionate
+              approach.
+            </p>
+            <p>
+              As a co-founder of Zuhd Guidance, Dr. Sami ensures that the
+              platform's content remains authentic, scholarly, and accessible,
+              guiding audiences with integrity and care. His dual background in
+              healthcare and Islamic studies positions him uniquely to lead with
+              both intellect and heart, reinforcing Zuhd's mission of empowering
+              the Ummah through knowledge and action.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Additional 3 Lines -->
       <div class="additional-lines">
         <p>
@@ -659,27 +840,6 @@
           Join us to embark on a transformative journey of faith and learning.
         </p>
       </div>
-      <!-- Founder 2 Section -->
-      <section class="about-section">
-        <div class="about-image">
-          <img src="Photo 18-07-2025, 15 39 30.jpg" alt="Dr. Sami Al-Hashmi" />
-        </div>
-        <div class="about-content">
-          <h3>Dr. Sami Al-Hashmi</h3>
-          <p>
-            Born in Vienna, Austria. Earned a Master’s in Dental Surgery from
-            the University of Otago, New Zealand. Received a full academic
-            scholarship for his studies. Participated in community dental
-            programs and outreach initiatives.
-          </p>
-          <p>
-            Blended clinical training with public health service. While
-            practicing dentistry, pursued Islamic Studies at WISE University in
-            Jordan. Balanced medical expertise with spiritual education. Bridges
-            science and faith through a compassionate, holistic approach.
-          </p>
-        </div>
-      </section>
     </div>
 
     <!-- About Section -->
@@ -786,44 +946,6 @@
       </div>
     </section>
 
-    <!-- Timeline Section -->
-    <!-- <section class="zuhd-timeline-section">
-        <h2 class="zuhd-section-title2">Timeline</h2>
-        <div class="zuhd-timeline-container">
-            <div class="zuhd-timeline-line"></div>
-            <div class="zuhd-timeline-item" data-year="2021">
-                <div class="zuhd-timeline-dot"></div>
-                <div class="zuhd-timeline-content">
-                    <div class="zuhd-timeline-year">2021</div>
-                </div>
-            </div>
-            <div class="zuhd-timeline-item" data-year="2022">
-                <div class="zuhd-timeline-dot"></div>
-                <div class="zuhd-timeline-content">
-                    <div class="zuhd-timeline-year">2022</div>
-                </div>
-            </div>
-            <div class="zuhd-timeline-item" data-year="2023">
-                <div class="zuhd-timeline-dot"></div>
-                <div class="zuhd-timeline-content">
-                    <div class="zuhd-timeline-year">2023</div>
-                </div>
-            </div>
-            <div class="zuhd-timeline-item" data-year="2024">
-                <div class="zuhd-timeline-dot"></div>
-                <div class="zuhd-timeline-content">
-                    <div class="zuhd-timeline-year">2024</div>
-                </div>
-            </div>
-            <div class="zuhd-timeline-item" data-year="2025">
-                <div class="zuhd-timeline-dot zuhd-pulse"></div>
-                <div class="zuhd-timeline-content">
-                    <div class="zuhd-timeline-year">2025</div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-top">
@@ -902,7 +1024,6 @@
                   >Contact Us</a
                 >
               </li>
-              <!-- <li><a href="/faq.html" onclick="linkClick('FAQ')">FAQ's</a></li> -->
             </ul>
           </div>
           <div class="footer-column newsletter">
@@ -969,24 +1090,19 @@
     <script>
       // Add interactive effects
       document.addEventListener("DOMContentLoaded", function () {
-        const timelineItems = document.querySelectorAll(".zuhd-timeline-item");
-        timelineItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            const dot = this.querySelector(".zuhd-timeline-dot");
-            const year = this.querySelector(".zuhd-timeline-year");
-            dot.style.transform = "scale(1.3)";
-            year.style.color = "var(--gold)";
-            year.style.textShadow = "0 0 20px rgba(255, 215, 0, 0.8)";
-            setTimeout(() => {
-              dot.style.transform = "scale(1)";
-              year.style.textShadow = "0 0 10px rgba(255, 215, 0, 0.3)";
-            }, 300);
-          });
-        });
+        // Close modal on outside click
+        window.onclick = function (event) {
+          const modals = document.getElementsByClassName("modal");
+          for (let i = 0; i < modals.length; i++) {
+            if (event.target === modals[i]) {
+              modals[i].style.display = "none";
+            }
+          }
+        };
 
         // Intersection Observer for animations
         const sections = document.querySelectorAll(
-          ".zuhd-vision-section, .about-section, .additional-lines, .fade-in-barakah"
+          ".zuhd-vision-section, .additional-lines, .fade-in-barakah"
         );
         const observer = new IntersectionObserver(
           (entries) => {
