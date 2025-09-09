@@ -25,24 +25,88 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <style>
-      /* :root {
-            --deep-green: #0d2818;
-            --primary-color: #1a472a;
-            --gold: #c6a87d;
-            --secondary: #2e7d32;
-        } */
+      /* Animation Keyframes */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      @keyframes borderGlow {
+        0% {
+          box-shadow: 0 0 5px var(--gold);
+        }
+        50% {
+          box-shadow: 0 0 20px var(--gold);
+        }
+        100% {
+          box-shadow: 0 0 5px var(--gold);
+        }
+      }
 
       body {
         font-family: "Serotiva-Light";
         margin: 0;
         padding: 0;
-        /* background-color: #f9f9f9; */
+        scroll-behavior: smooth;
       }
 
       .main-container {
-        /* max-width: 1200px; */
-        margin: 0 auto;
-        /* padding: 0 20px; */
+        overflow: hidden;
+      }
+
+      /* Banner enhancements - RESTORED TO ORIGINAL */
+      .banner-wrapper3 {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(13, 40, 24, 0.61));
+        z-index: 1;
       }
 
       .banner-text {
@@ -55,52 +119,109 @@
         border-radius: 15px;
         padding: clamp(15px, 5vw, 20px);
       }
+
+      .main-heading {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        letter-spacing: 2px;
+      }
+
+      .sub-heading {
+        font-size: 1.5;
+        margin-bottom: 0.5rem;
+      }
+
+      .sub-heading2 {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
       .curriculum-section {
         padding: 0;
         background: var(--white);
         max-width: 1200px;
         margin: 70px auto;
-        /* padding-left: 20px;
-    padding-right: 20px; */
       }
 
       .curriculum-heading {
         color: var(--gold);
         font-size: 2.5rem;
         margin: 40px auto;
+        position: relative;
+        display: inline-block;
+      }
+
+      .curriculum-heading::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--gold);
+        transition: width 0.5s ease;
+      }
+
+      .curriculum-heading:hover::after {
+        width: 100%;
       }
 
       .curriculum-item {
         background: #ffffff;
-        /* padding: clamp(15px, 5vw, 25px); */
         border-radius: 12px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
         border: 1px solid rgba(0, 0, 0, 0.05);
-        /* margin-bottom: clamp(30px, 8vw, 80px); */
+        overflow: hidden;
+        transform: translateY(0);
+      }
+
+      .curriculum-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 0;
+        background: var(--gold);
+        transition: height 0.5s ease;
+      }
+
+      .curriculum-item:hover::before {
+        height: 100%;
       }
 
       .curriculum-item .curriculum-subtitle {
         font-size: 1.7rem;
-        /* font-weight: 900; */
         color: var(--deep-green);
         margin-bottom: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .curriculum-item:hover .curriculum-subtitle {
+        color: var(--gold);
+        transform: translateX(10px);
       }
 
       .curriculum-item p {
         font-size: 1.2rem;
         line-height: 1.6;
         color: #444;
+        transition: all 0.3s ease;
+      }
+
+      .curriculum-item:hover p {
+        transform: translateX(5px);
       }
 
       .curriculum-item:hover {
         box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
-        transform: translateY(-4px);
+        transform: translateY(-10px) scale(1.02);
       }
 
       .calendar-downloads-section {
         padding: 0px 20px;
-        /* padding: 0 auto; */
       }
 
       .section-heading-center-green-alt {
@@ -109,6 +230,21 @@
         text-align: center;
         margin-top: 70px;
         margin-bottom: 15px;
+        position: relative;
+      }
+
+      .section-heading-center-green-alt::before,
+      .section-heading-center-green-alt::after {
+        content: "✦";
+        color: var(--gold);
+        margin: 0 15px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .section-heading-center-green-alt:hover::before,
+      .section-heading-center-green-alt:hover::after {
+        opacity: 1;
       }
 
       .section-heading-center-green-alt1 {
@@ -116,8 +252,6 @@
         font-size: 1.5rem;
         margin-bottom: 10px;
         text-align: center;
-        /* margin-top: clamp(30px, 8vw, 60px);
-            margin-bottom: 15px; */
       }
 
       .calendar-description {
@@ -140,6 +274,9 @@
       .calendar-image-wrapper {
         flex: 1 1 300px;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
       }
 
       .calendar-image {
@@ -148,30 +285,84 @@
         height: auto;
         border-radius: 12px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
+        transition: all 0.5s ease;
+        transform: scale(1);
+      }
+
+      .calendar-image-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(198, 168, 125, 0.2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .calendar-image-wrapper:hover::after {
+        opacity: 1;
       }
 
       .calendar-image:hover {
-        transform: scale(1.03);
+        transform: scale(1.1);
       }
 
       .calendar-download-area {
         flex: 1 1 300px;
         background: white;
-        /* padding: clamp(15px, 5vw, 25px); */
         border-radius: 12px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .calendar-download-area::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          transparent,
+          rgba(198, 168, 125, 0.1),
+          transparent
+        );
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+        opacity: 0;
+      }
+
+      .calendar-download-area:hover::before {
+        animation: borderGlow 2s infinite;
+        opacity: 1;
       }
 
       .calendar-download-area p {
         font-size: 1.2rem;
         line-height: 1.6;
         color: #444;
+        transition: all 0.3s ease;
+      }
+
+      .calendar-download-area:hover p {
+        transform: translateX(5px);
       }
 
       .calendar-download-title {
         font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         color: var(--deep-green);
+        transition: all 0.3s ease;
+      }
+
+      .calendar-download-area:hover .calendar-download-title {
+        color: var(--gold);
+        transform: translateX(10px);
       }
 
       .calendar-download-text {
@@ -180,6 +371,7 @@
         color: #666;
       }
 
+      /* BUTTON STYLES - UPDATED TO MATCH ENROLL NOW BUTTON */
       .download-button {
         display: inline-block;
         padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px);
@@ -188,7 +380,7 @@
         border-radius: 6px;
         font-weight: 600;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
         width: 100%;
         text-align: center;
       }
@@ -200,7 +392,6 @@
 
       .content-wrapper {
         padding: clamp(10px, 5vw, 20px);
-
         width: 100%;
         margin-top: -130px;
         background-color: #ffffff;
@@ -213,10 +404,10 @@
         text-align: center;
       }
 
+      /* REMOVED ANIMATION from this heading */
       .content-title1 {
         font-size: 2.5rem;
         color: var(--deep-green);
-        /* font-weight: 700; */
         margin-bottom: 15px;
         padding-top: 30px;
       }
@@ -225,8 +416,12 @@
         font-size: 1.2rem;
         color: #444;
         line-height: 1.7;
-        /* max-width: 90%; */
         margin: 0 auto 40px;
+        transition: all 0.3s ease;
+      }
+
+      .content-description1:hover {
+        transform: scale(1.02);
       }
 
       .services-layout {
@@ -243,19 +438,45 @@
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
         flex: 1 1 280px;
         text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.4s ease;
         border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+
+      .service-box:hover::before {
+        transform: scaleX(1);
       }
 
       .service-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
       }
 
       .service-icon {
         color: var(--deep-green);
         margin-bottom: 15px;
         font-size: clamp(2rem, 6vw, 2.5rem);
+        transition: all 0.4s ease;
+        display: inline-block;
+      }
+
+      .service-box:hover .service-icon {
+        color: var(--gold);
+        transform: rotateY(180deg) scale(1.2);
       }
 
       .service-name {
@@ -263,12 +484,23 @@
         font-weight: 700;
         color: var(--deep-green);
         margin-bottom: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .service-box:hover .service-name {
+        color: var(--gold);
+        transform: translateY(-5px);
       }
 
       .service-info {
         font-size: 1.2rem;
         color: #555;
         line-height: 1.6;
+        transition: all 0.3s ease;
+      }
+
+      .service-box:hover .service-info {
+        transform: translateY(-3px);
       }
 
       .about-section {
@@ -287,9 +519,24 @@
 
       .about-content .section-heading {
         font-size: 2.5rem;
-        /* font-weight: 800; */
         color: var(--deep-green);
-        /* margin-bottom: 20px; */
+        position: relative;
+        display: inline-block;
+      }
+
+      .about-content .section-heading::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--gold);
+        transition: width 0.5s ease;
+      }
+
+      .about-content .section-heading:hover::after {
+        width: 100%;
       }
 
       .about-content .section-paragraph {
@@ -297,12 +544,39 @@
         line-height: 1.7;
         word-spacing: 0px;
         color: #444;
-        /* margin-bottom: 15px; */
+        transition: all 0.3s ease;
+      }
+
+      .about-content .section-paragraph:hover {
+        transform: translateX(5px);
       }
 
       .about-image-wrapper {
         flex: 1;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+
+      .about-image-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(13, 40, 24, 0.2),
+          rgba(198, 168, 125, 0.2)
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .about-image-wrapper:hover::after {
+        opacity: 1;
       }
 
       .about-image {
@@ -310,53 +584,99 @@
         height: auto;
         border-radius: 12px;
         box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+        transition: all 0.5s ease;
       }
 
-      .about-image {
-        transform: none !important;
-        transition: none !important;
-      }
-
-      .about-image:hover {
-        transform: none !important;
+      .about-image-wrapper:hover .about-image {
+        transform: scale(1.05);
       }
 
       .teachers-venues-section {
-        /* background-color: #1a3c34;  */
+        position: relative;
+      }
+
+      .teachers-image-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .teachers-image {
+        width: 100%;
+        height: auto;
+        transition: all 0.5s ease;
+      }
+
+      .teachers-image-wrapper:hover .teachers-image {
+        transform: scale(1.05);
       }
 
       .teachers-content .section-heading-white {
         font-size: 2.5rem;
-        /* font-weight: 800; */
         color: var(--gold);
         margin-bottom: 20px;
         text-align: left;
+        position: relative;
+        display: inline-block;
+      }
+
+      .teachers-content .section-heading-white::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--gold);
+        transition: width 0.5s ease;
+      }
+
+      .teachers-content .section-heading-white:hover::after {
+        width: 100%;
       }
 
       .teachers-content .section-paragraph-white {
         font-size: 1.2rem;
         line-height: 1.8;
-        /* letter-spacing: 0; */
         color: #ececec;
         margin-bottom: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .teachers-content .section-paragraph-white:hover {
+        transform: translateX(5px);
       }
 
       .section-heading-center-white {
         text-align: center;
         color: var(--gold);
         font-size: 2.5rem;
-        /* font-weight: 800; */
         margin-top: 70px;
         margin-bottom: 0;
         letter-spacing: 1px;
         text-transform: uppercase;
         padding: 10px 0;
         border-radius: 6px;
+        position: relative;
+      }
+
+      .section-heading-center-white::before,
+      .section-heading-center-white::after {
+        content: "✧";
+        color: var(--gold);
+        margin: 0 15px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .section-heading-center-white:hover::before,
+      .section-heading-center-white:hover::after {
+        opacity: 1;
       }
 
       .curriculum-grid {
         gap: 15px;
       }
+
       .rules-description {
         font-size: 1.2rem;
         line-height: 1.8;
@@ -365,42 +685,54 @@
         margin: 0px auto 60px;
         gap: 3px;
         text-align: center;
-        /* padding: 0 10px; */
-        /* font-weight: 400; */
+        transition: all 0.3s ease;
       }
+
+      .rules-description:hover {
+        transform: scale(1.02);
+      }
+
       .rules-regulations-section {
         padding: 0;
       }
+
       .main-images-rules {
         display: flex;
         flex-wrap: wrap;
         margin: 0 auto 70px;
-        padding: 0 20px; /* Reduced padding for better fit on mobile */
-        gap: clamp(
-          15px,
-          4vw,
-          20px
-        ); /* Adjusted gap for tighter spacing on smaller screens */
+        padding: 0 20px;
+        gap: clamp(15px, 4vw, 20px);
         justify-content: center;
-        align-items: stretch; /* Ensures consistent height for items */
+        align-items: stretch;
       }
+
       .rules-image-wrapper {
-        flex: 1 1 300px; /* Allow items to grow but set a reasonable minimum width */
+        flex: 1 1 300px;
         text-align: center;
         max-width: 100%;
         display: flex;
-        flex-direction: column; /* Stack image, label, and button vertically */
-        align-items: center; /* Center content horizontally */
-        gap: 10px; /* Space between image, label, and button */
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
       }
+
+      .rules-image-wrapper:hover {
+        transform: translateY(-10px);
+      }
+
       .rules-image {
         width: 100%;
-        /* height: auto; */
-        max-height: 300px; /* Limit image height to prevent excessive scaling */
-        object-fit: cover; /* Ensure images scale nicely without distortion */
+        max-height: 300px;
+        object-fit: cover;
         border-radius: 12px;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.5s ease;
+      }
+
+      .rules-image-wrapper:hover .rules-image {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
       }
 
       .pdf-download-container {
@@ -410,13 +742,13 @@
         justify-content: center;
       }
 
+      /* UPDATED TO MATCH ENROLL NOW BUTTON STYLE */
       .pdf-download-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px; /* Space between icon and text */
-        /* margin-top: 10px; */
-        padding: 20px 20px;
+        gap: 10px;
+        padding: 10px;
         background-color: var(--gold);
         color: var(--deep-green);
         border-radius: 6px;
@@ -424,28 +756,17 @@
         text-decoration: none;
         transition: all 0.3s ease;
         width: 100%;
-        max-width: 250px; /* Limit button width for better proportionality */
+        max-width: 250px;
         text-align: center;
         font-size: clamp(0.8rem, 2.5vw, 0.95rem);
       }
+
       .pdf-download-btn:hover {
         background-color: var(--deep-green);
         color: var(--gold);
-        transform: translateY(-4px);
-        box-shadow: 0 6px 18px rgba(15, 61, 46, 0.35);
       }
 
-      .pdf-download-btn .pdf-icon {
-        width: 20px;
-        height: 20px;
-        fill: var(--deep-green);
-        transition: fill 0.3s ease;
-      }
-
-      .pdf-download-btn:hover .pdf-icon {
-        fill: var(--gold);
-      }
-
+      /* ENROLL NOW BUTTON STYLE - KEPT ORIGINAL */
       .primary-btn {
         display: block;
         width: max-content;
@@ -464,39 +785,113 @@
         box-shadow: 0 4px 12px rgba(15, 61, 46, 0.2);
       }
 
-      .primary-btn:hover,
-      .download-button:hover,
-      .pdf-download-btn:hover {
+      .primary-btn:hover {
         background-color: var(--deep-green);
         color: var(--gold);
-        transform: translateY(-4px);
-        box-shadow: 0 6px 18px rgba(15, 61, 46, 0.35);
-      }
-      .rules-image {
-        width: 100%;
-        /* height: auto; */
-        border-radius: 12px;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
       }
 
-      .rules-image:hover {
+      .image-label {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-weight: 600;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+      }
+
+      .rules-image-wrapper:hover .image-label {
+        color: var(--gold);
+        transform: translateY(-3px);
+      }
+
+      /* Footer animations */
+      .footer-column h3 {
+        transition: all 0.3s ease;
+      }
+
+      .footer-column:hover h3 {
+        color: var(--gold);
+        transform: translateX(5px);
+      }
+
+      .footer-column ul li a {
+        transition: all 0.3s ease;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--gold);
+        transform: translateX(10px);
+      }
+
+      .social-link {
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        transform: translateY(-5px) scale(1.2);
+        color: var(--gold);
+      }
+
+      .newsletter-form input {
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form input:focus {
         transform: scale(1.05);
-        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 10px rgba(198, 168, 125, 0.5);
+      }
+
+      .newsletter-form button {
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form button:hover {
+        transform: rotate(90deg) scale(1.1);
+        background: var(--deep-green);
+        color: var(--gold);
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.6s ease;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
       }
 
       /* Responsive adjustments */
       @media (max-width: 768px) {
-        /* .main-container {
-                padding: 0 15px;
-            } */
+        .about-content .section-paragraph {
+          font-size: 1.2rem;
+        }
 
         .banner-text {
           padding: 15px;
           margin-top: 30px;
-        }
-        .about-content .section-paragraph {
-          font-size: 1.2rem;
         }
 
         .banner-text h1 {
@@ -559,15 +954,10 @@
 
         .about-image-wrapper {
           order: 1;
-          /* height: auto; */
-          /* max-width: 90%; */
         }
         .section-paragraph {
           padding: 0;
         }
-        /* .section-heading{
-                
-            } */
 
         .curriculum-section {
           padding: 30px 15px;
@@ -588,12 +978,10 @@
 
         .teachers-content {
           text-align: center;
-          /* padding: 20px; */
         }
 
         .teachers-content .section-heading-white {
           font-size: 2.5rem;
-          /* font-weight: 2000; */
           text-align: center;
         }
 
@@ -631,31 +1019,26 @@
         }
         .main-images-rules {
           flex-direction: column;
-          gap: 20px; /* Slightly larger gap for clarity */
+          gap: 20px;
           padding: 0 15px;
         }
         .image-label {
           font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-
           font-weight: 600;
           margin: 10px 0;
         }
         .rules-image-wrapper {
-          flex: 1 1 100%; /* Full width on mobile */
-          max-width: 100%; /* Ensure it doesn't exceed container */
+          flex: 1 1 100%;
+          max-width: 100%;
         }
         .pdf-download-btn {
-          max-width: 220px; /* Smaller button width for mobile */
+          max-width: 220px;
           padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 12px);
           font-size: clamp(0.75rem, 2.5vw, 0.9rem);
         }
       }
 
       @media (max-width: 480px) {
-        /* .main-container {
-                padding: 0 10px;
-            } */
-
         .banner-text {
           padding: 10px;
           margin-top: 20px;
@@ -719,11 +1102,8 @@
         }
 
         .main-images-rules {
-          padding: 0 10px; /* Further reduced padding */
+          padding: 0 10px;
           gap: 15px;
-        }
-        .rules-image {
-          /* max-height: 200px;  */
         }
         .image-label {
           font-size: clamp(0.8rem, 2.5vw, 1rem);
@@ -733,7 +1113,7 @@
           margin: 50px auto;
         }
         .pdf-download-btn {
-          max-width: 200px; /* Even smaller button for tiny screens */
+          max-width: 200px;
           padding: clamp(5px, 1.5vw, 7px) clamp(8px, 2.5vw, 10px);
           font-size: clamp(0.7rem, 2.5vw, 0.85rem);
         }
@@ -744,14 +1124,20 @@
         }
 
         .rules-image-wrapper {
-          gap: 8px; /* Tighter spacing for smaller screens */
+          gap: 8px;
         }
 
         .pdf-download-btn {
           padding: clamp(4px, 1.5vw, 8px) clamp(8px, 2.5vw, 15px);
           font-size: clamp(0.7rem, 2vw, 0.9rem);
         }
+
+        .pdf-icon {
+          width: 10px;
+          height: auto;
+        }
       }
+      
     </style>
   </head>
   <body>
@@ -759,7 +1145,7 @@
       <div id="navbar"></div>
     </nav>
     <div class="main-container">
-      <!-- Banner Section -->
+      <!-- Banner Section - RESTORED TO ORIGINAL -->
       <section class="banner-wrapper3">
         <div class="banner-overlay"></div>
         <div class="banner-text">
@@ -772,7 +1158,7 @@
             href="https://docs.google.com/forms/d/e/1FAIpQLSd28zYx4yYo1FRDzKutAoKG8c49nIL6sVuGy6oLAedu_IwwHA/viewform"
           >
             <button class="primary-btn" onclick="scrollToAction()">
-              Enroll Now 
+              Enroll Now
             </button>
           </a>
         </div>
@@ -780,8 +1166,9 @@
       <!-- Content Section -->
       <section class="content-wrapper">
         <div class="content-container">
+          <!-- REMOVED ANIMATION CLASS from this heading -->
           <h2 class="content-title1">Islamic Education for Young Muslims</h2>
-          <p class="content-description1">
+          <p class="content-description1 fade-in">
             Our maktab classes provide essential Islamic education for
             school-aged children in a supportive and nurturing environment. We
             focus on building strong foundations in Quranic recitation, Islamic
@@ -789,7 +1176,7 @@
           </p>
           <!-- Services Grid -->
           <div class="services-layout">
-            <div class="service-box">
+            <div class="service-box fade-in">
               <div class="service-icon">
                 <svg
                   width="48"
@@ -810,7 +1197,7 @@
                 Learn to read and memorize the Quran with proper tajweed
               </p>
             </div>
-            <div class="service-box">
+            <div class="service-box fade-in">
               <div class="service-icon">
                 <svg
                   width="48"
@@ -830,7 +1217,7 @@
                 Explore the core teachings and practices of Islam
               </p>
             </div>
-            <div class="service-box">
+            <div class="service-box fade-in">
               <div class="service-icon">
                 <svg
                   width="48"
@@ -855,7 +1242,7 @@
       </section>
       <!-- About Section -->
       <section class="about-section">
-        <div class="about-content">
+        <div class="about-content slide-in-left">
           <h2 class="section-heading">What is Maktab?</h2>
           <p class="section-paragraph">
             Islamic after-school classes, commonly known as Maktab, are
@@ -873,7 +1260,7 @@
             faith.curriculum-gridcurriculum-grid
           </p>
         </div>
-        <div class="about-image-wrapper">
+        <div class="about-image-wrapper slide-in-right">
           <img
             src="/70e159c7-5700-4b3f-85f2-4c6195fdc984.png"
             alt="Children studying Quran"
@@ -883,11 +1270,11 @@
       </section>
       <!-- Curriculum Section -->
       <section class="curriculum-section">
-        <h2 class="section-heading curriculum-heading">
+        <h2 class="section-heading curriculum-heading fade-in">
           Our Engaging Curriculum
         </h2>
         <div class="curriculum-grid">
-          <div class="curriculum-item">
+          <div class="curriculum-item fade-in">
             <h2 class="curriculum-subtitle">Unique & Standards-Based Books</h2>
             <p class="section-paragraph">
               Our curriculum utilizes new, unique books developed specifically
@@ -902,7 +1289,7 @@
               enjoyable and impactful.
             </p>
           </div>
-          <div class="curriculum-item">
+          <div class="curriculum-item fade-in">
             <h3 class="curriculum-subtitle">
               Holistic Development & National Exams
             </h3>
@@ -922,14 +1309,14 @@
       </section>
       <!-- Teachers & Venues Section -->
       <section class="teachers-venues-section">
-        <div class="teachers-image-wrapper">
+        <div class="teachers-image-wrapper slide-in-left">
           <img
             src="/islamic.png"
             alt="Volunteer teacher"
             class="teachers-image"
           />
         </div>
-        <div class="teachers-content">
+        <div class="teachers-content slide-in-right">
           <h2 class="section-heading-white">Dedicated Teachers</h2>
           <p class="section-paragraph-white">
             Our Islamic after-school classes are often taught by passionate
@@ -948,20 +1335,22 @@
       </section>
       <!-- Calendar & Downloads Section -->
       <section class="calendar-downloads-section">
-        <h2 class="section-heading-center-green-alt">Academic Calendar</h2>
-        <p class="section-paragraph calendar-description">
+        <h2 class="section-heading-center-green-alt fade-in">
+          Academic Calendar
+        </h2>
+        <p class="section-paragraph calendar-description fade-in">
           Stay updated with our academic schedule and important dates. Download
           our annual calendar and other essential documents here.
         </p>
         <div class="calendar-content">
-          <div class="calendar-image-wrapper">
+          <div class="calendar-image-wrapper fade-in">
             <img
               src="/calender.jpg"
               alt="Maktab Academic Calendar"
               class="calendar-image"
             />
           </div>
-          <div class="calendar-download-area">
+          <div class="calendar-download-area fade-in">
             <h3 class="section-heading-center-green-alt1">
               Maktab Academic Calendar
             </h3>
@@ -994,15 +1383,16 @@
         </div>
       </section>
       <!-- Rules & Regulations Section -->
-      <!-- Rules & Regulations Section -->
       <section class="rules-regulations-section">
-        <h2 class="section-heading-center-white">Rules and Regulations</h2>
-        <p class="section-paragraph rules-description">
+        <h2 class="section-heading-center-white fade-in">
+          Rules and Regulations
+        </h2>
+        <p class="section-paragraph rules-description fade-in">
           To ensure a safe, respectful, and productive learning environment for
           all students, please review our rules and regulations.
         </p>
         <div class="main-images-rules">
-          <div class="rules-image-wrapper">
+          <div class="rules-image-wrapper fade-in">
             <img
               src="maktab/RULES &REGULATIONS.png"
               alt="Thumbnail for Rules Page 1"
@@ -1015,17 +1405,18 @@
                 class="pdf-download-btn"
                 download="Maktab_Rules_Regulations.pdf"
               >
-                <svg class="pdf-icon" viewBox="0 0 24 24">
+           <svg class="pdf-icon" viewBox="0 0 24 24">
                   <path
                     d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
                   />
                   <path d="M12,17L17,12H14V7H10V12H7L12,17Z" />
                 </svg>
+
                 Download Full Rule 1 PDF
               </a>
             </div>
           </div>
-          <div class="rules-image-wrapper">
+          <div class="rules-image-wrapper fade-in">
             <img
               src="maktab/TRAFFIC MANAGEMENT PROCEEDURES.png"
               alt="Thumbnail for Rules Page 2"
@@ -1194,6 +1585,26 @@
       </div>
     </footer>
     <script>
+      // Scroll animation for elements with fade-in, slide-in classes
+      function checkScroll() {
+        const elements = document.querySelectorAll(
+          ".fade-in, .slide-in-left, .slide-in-right"
+        );
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (elementPosition < screenPosition) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      // Initial check and add scroll listener
+      window.addEventListener("load", checkScroll);
+      window.addEventListener("scroll", checkScroll);
+
       // footer js
 
       // Mobile accordion functionality
