@@ -85,7 +85,7 @@
       /* Main Content Styles */
       .main-content {
         margin: 0 auto;
-        background-color: #F8F8F8;
+        background-color: #f8f8f8;
       }
 
       /* Section Styles */
@@ -263,7 +263,7 @@
 
       .sort-btn.active {
         background: var(--deep-green);
-        color:#F8F8F8;
+        color: #f8f8f8;
       }
 
       /* View All Button */
@@ -276,7 +276,7 @@
         display: inline-block;
         padding: 16px 32px;
         background: var(--deep-green);
-        color: #F7EFE5;
+        color: #f7efe5;
         border: 1px solid var(--gold);
         border-radius: 8px;
         font-weight: 500;
@@ -319,7 +319,7 @@
         transition: color 0.3s ease;
       }
 
-      .islamic-playlists-section p{
+      .islamic-playlists-section p {
         text-align: center;
       }
 
@@ -414,7 +414,7 @@
     <div class="main-content">
       <!-- Video Gallery -->
       <section class="video-gallery">
-        <br>
+        <br />
         <div class="section-header">
           <h2>The Importance of Prayer</h2>
           <p>Learn about the significance of Salah in a Muslim's life</p>
@@ -524,9 +524,9 @@
           >View All Playlists <i class="fas fa-arrow-right"></i
         ></a>
       </div>
-      <br>
+      <br />
     </div>
-    
+
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-top">
@@ -545,11 +545,9 @@
                   >ZUHD Lectures</a
                 >
               </li>
-              
+
               <li>
-                <a
-                  href="/desclimer.html"
-                  onclick="linkClick('Disclaimer')"
+                <a href="/desclimer.html" onclick="linkClick('Disclaimer')"
                   >Disclaimer</a
                 >
               </li>
@@ -715,6 +713,17 @@
       let umarVideos = [];
 
       // Fetch videos from YouTube channel (Uploads playlist)
+      // Helper: parse ISO 8601 duration (e.g., "PT1M30S") → total seconds
+      function parseDuration(isoDuration) {
+        const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+        const matches = isoDuration.match(regex);
+        const hours = parseInt(matches[1] || 0);
+        const minutes = parseInt(matches[2] || 0);
+        const seconds = parseInt(matches[3] || 0);
+        return hours * 3600 + minutes * 60 + seconds;
+      }
+
+      // Fetch videos from YouTube channel (Uploads playlist, excluding Shorts)
       async function fetchVideos() {
         try {
           const channelResponse = await fetch(
@@ -742,8 +751,9 @@
             .map((item) => item.snippet.resourceId.videoId)
             .join(",");
 
+          // ⬇️ Added contentDetails to fetch duration
           const videosResponse = await fetch(
-            `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoIds}&part=snippet,statistics&maxResults=${MAX_RESULTS}`
+            `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoIds}&part=snippet,statistics,contentDetails&maxResults=${MAX_RESULTS}`
           );
           const videosData = await videosResponse.json();
 
@@ -751,14 +761,20 @@
             throw new Error("No video details found");
           }
 
-          videos = videosData.items.map((video) => ({
-            id: video.id,
-            title: video.snippet.title,
-            description: video.snippet.description,
-            thumbnail: video.snippet.thumbnails.medium.url,
-            date: video.snippet.publishedAt,
-            views: parseInt(video.statistics.viewCount),
-          }));
+          // Filter out Shorts (≤ 60s)
+          videos = videosData.items
+            .filter((video) => {
+              const totalSeconds = parseDuration(video.contentDetails.duration);
+              return totalSeconds > 60; // exclude Shorts
+            })
+            .map((video) => ({
+              id: video.id,
+              title: video.snippet.title,
+              description: video.snippet.description,
+              thumbnail: video.snippet.thumbnails.medium.url,
+              date: video.snippet.publishedAt,
+              views: parseInt(video.statistics.viewCount),
+            }));
 
           filteredVideos = [...videos];
           displayVideos(filteredVideos);
