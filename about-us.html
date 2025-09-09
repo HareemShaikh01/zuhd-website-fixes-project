@@ -12,14 +12,17 @@
       rel="stylesheet"
     />
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
       :root {
-        --deep-green: #0F3D2E;
+        --deep-green: #0f3d2e;
         --gold: #c8b88a;
       }
-      
+
       body {
         margin: 0;
         font-family: "Serotiva-Light";
@@ -81,7 +84,11 @@
       }
 
       @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
           transform: translateY(0);
         }
         40% {
@@ -510,7 +517,7 @@
       }
 
       .vertical-content::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -612,7 +619,7 @@
       }
 
       .horizontal-content::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -662,7 +669,7 @@
 
       .today-item .year {
         color: var(--gold);
-        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       }
 
       .today-item .description {
@@ -821,7 +828,6 @@
         }
       }
 
-     
       @media (max-width: 480px) {
         .header button {
           padding: 8px 18px;
@@ -854,7 +860,215 @@
         }
       }
 
-     
+      .footer {
+        background-color: var(--deep-green);
+        color: white;
+        padding: 40px 0 20px;
+        font-family: "Inter", sans-serif;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+      }
+
+      .footer-column h3 {
+        color: var(--gold);
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer-column ul li a {
+        color: #ececec;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--gold);
+        padding-left: 5px;
+      }
+
+      .footer-column.newsletter {
+        max-width: 300px;
+      }
+
+      .footer-column.newsletter p {
+        color: #ececec;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-size: 0.9rem;
+      }
+
+      .newsletter-form button {
+        background-color: var(--gold);
+        color: var(--deep-green);
+        border: none;
+        padding: 0 15px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form button:hover {
+        background-color: var(--gold);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #ececec;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background-color: var(--gold);
+        color: var(--deep-green);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        flex-wrap: wrap;
+      }
+
+      .copyright {
+        color: #ececec;
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #ececec;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .footer-top {
+          flex-direction: column;
+        }
+
+        .footer-column {
+          min-width: 100%;
+          margin-bottom: 25px;
+        }
+
+        .footer-column h3 {
+          cursor: pointer;
+        }
+
+        .footer-column:not(.newsletter) ul {
+          display: none;
+        }
+
+        .footer-column.active ul {
+          display: block;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        .footer-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer {
+          padding: 30px 0 15px;
+        }
+
+        .footer-content {
+          padding: 0 15px;
+        }
+
+        .footer-column {
+          padding: 0 10px;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        }
+      }
     </style>
   </head>
 
@@ -1156,26 +1370,171 @@
       </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-column">
+            <h3>zuhd Academy</h3>
+            <ul>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('About ZUHD')"
+                  >About ZUHD</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/zuhd-lectures.html"
+                  onclick="linkClick('ZUHD Lectures')"
+                  >ZUHD Lectures</a
+                >
+              </li>
+              <li>
+                <a href="/desclimer.html" onclick="linkClick('Disclaimer')"
+                  >Disclaimer</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/after-school-classes.html"
+                  onclick="linkClick('After School Classes')"
+                  >After School Classes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  onclick="linkClick('Terms and conditions')"
+                  >Terms and conditions</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="/store.html" onclick="linkClick('zuhd Store')"
+                  >zuhd Store</a
+                >
+              </li>
+              <li>
+                <a href="/donate.html" onclick="linkClick('Donate Now')"
+                  >Donate Now</a
+                >
+              </li>
+              <li>
+                <a href="/ziyarat.html" onclick="linkClick('Ziyarat')"
+                  >Ziyarat</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('Our Story')"
+                  >Our Story</a
+                >
+              </li>
+              <li><a href="/blog.html" onclick="linkClick('Blog')">Blog</a></li>
+              <li>
+                <a href="/about-zuhd.html" onclick="linkClick('About Us')"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="/contact.html" onclick="linkClick('Contact Us')"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column newsletter">
+            <h3>Stay Connected to Guidance</h3>
+            <p>
+              Be the first to receive Islamic guidance, inspiring articles, and
+              special offers—only from ZUHD.
+            </p>
+            <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">→</button>
+            </form>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/zuhd.au"
+                class="social-link"
+                onclick="socialClick('Facebook')"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/zuhd_au"
+                class="social-link"
+                onclick="socialClick('Instagram')"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@zuhd.store"
+                class="social-link"
+                onclick="socialClick('TikTok')"
+                title="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@zuhdau"
+                class="social-link"
+                onclick="socialClick('YouTube')"
+                title="YouTube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2024 Zuhd Guidance All rights reserved.</div>
+          <div class="footer-links">
+            <a href="#" onclick="linkClick('Terms of Service')"
+              >Terms of Service</a
+            >
+            <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+            <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+            <a href="#" onclick="linkClick('Accessibility Policy')"
+              >Accessibility Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <!-- Scroll Animation and Modal Close -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Timeline animation
         const verticalItems = document.querySelectorAll(".vertical-item");
         const horizontalItems = document.querySelectorAll(".horizontal-item");
-        
+
         // Add animation class when element is in viewport
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("animate");
-                
+
                 // Add staggered animation for horizontal items
                 if (entry.target.classList.contains("horizontal-item")) {
-                  const index = Array.from(horizontalItems).indexOf(entry.target);
+                  const index = Array.from(horizontalItems).indexOf(
+                    entry.target
+                  );
                   entry.target.style.transitionDelay = `${index * 0.1}s`;
                 }
-                
+
                 // Add staggered animation for vertical items
                 if (entry.target.classList.contains("vertical-item")) {
                   const index = Array.from(verticalItems).indexOf(entry.target);
@@ -1196,13 +1555,15 @@
         });
 
         // Hover effects for timeline items
-        const timelineItems = document.querySelectorAll(".vertical-item, .horizontal-item");
-        timelineItems.forEach(item => {
-          item.addEventListener("mouseenter", function() {
+        const timelineItems = document.querySelectorAll(
+          ".vertical-item, .horizontal-item"
+        );
+        timelineItems.forEach((item) => {
+          item.addEventListener("mouseenter", function () {
             this.style.zIndex = "10";
           });
-          
-          item.addEventListener("mouseleave", function() {
+
+          item.addEventListener("mouseleave", function () {
             this.style.zIndex = "";
           });
         });
@@ -1217,6 +1578,52 @@
           }
         }
       };
+
+      // footer js
+      // Mobile accordion functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const footerColumns = document.querySelectorAll(
+          ".footer-column:not(.newsletter)"
+        );
+
+        footerColumns.forEach((column) => {
+          const header = column.querySelector("h3");
+
+          header.addEventListener("click", function () {
+            if (window.innerWidth <= 768) {
+              column.classList.toggle("active");
+            }
+          });
+        });
+
+        // Handle window resize
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 768) {
+            footerColumns.forEach((column) => {
+              column.classList.remove("active");
+            });
+          }
+        });
+      });
+
+      // Analytics functions (placeholder implementations)
+      function linkClick(linkName) {
+        console.log("Link clicked:", linkName);
+        // Analytics tracking would go here
+      }
+
+      function socialClick(platform) {
+        console.log("Social media clicked:", platform);
+        // Analytics tracking would go here
+      }
+
+      function submitNewsletter(event) {
+        event.preventDefault();
+        const email = event.target.querySelector('input[type="email"]').value;
+        console.log("Newsletter subscription:", email);
+        alert("Thank you for subscribing! (This is a demo)");
+        event.target.reset();
+      }
     </script>
 
     <script src="navbar.js"></script>
