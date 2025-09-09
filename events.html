@@ -243,6 +243,7 @@
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         flex-wrap: wrap;
         gap: 20px;
+        font-size: 0.9rem;
       }
 
       .footer-links {
@@ -250,6 +251,7 @@
         gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
+        font-size: 0.9rem;
       }
 
       .section-title {
@@ -305,6 +307,7 @@
         object-fit: cover;
         z-index: 0;
         transition: transform 0.5s ease;
+        background-color: #f0f0f0; /* Fallback color */
       }
 
       .event-card:hover .card-image {
@@ -660,6 +663,7 @@
         padding: 8px 12px;
         cursor: pointer;
         border-radius: 50%;
+        z-index: 10;
       }
       .prev-btn {
         left: 10px;
@@ -671,6 +675,12 @@
       .event-caption {
         margin-top: 10px;
         font-weight: bold;
+      }
+
+      .modal-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
       }
     </style>
   </head>
@@ -721,8 +731,10 @@
     <section class="community-section">
       <h2 class="section-title">Join Our Community</h2>
 
-      <div class="elfsight-app-a7f6f23b-52e3-4550-b35d-8844a780d55a" data-elfsight-app-lazy></div>
-
+      <div
+        class="elfsight-app-a7f6f23b-52e3-4550-b35d-8844a780d55a"
+        data-elfsight-app-lazy
+      ></div>
 
       <div class="whatsapp-cta">
         <h3>Stay updated on upcoming events</h3>
@@ -823,11 +835,11 @@
       <div class="modal-content">
         <span class="close-modal">&times;</span>
         <h2 class="modal-title">Before the Trumpet: A World on the Edge</h2>
-        <p class="modal-intro" id="modal-intro-text">
+        <p class="modal-intro" id="trumpet-intro-text">
           <!-- Intro text will be inserted by JavaScript -->
         </p>
 
-        <div class="event-gallery" id="event-gallery">
+        <div class="modal-gallery" id="trumpet-gallery">
           <!-- Event blocks will be inserted by JavaScript -->
         </div>
       </div>
@@ -837,8 +849,8 @@
     <div id="palestine-modal" class="modal">
       <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <h2>Palestine National Day 2025</h2>
-        <p class="modal-intro-text"></p>
+        <h2 class="modal-title">Palestine National Day 2025</h2>
+        <p class="modal-intro" id="palestine-intro-text"></p>
         <div id="palestine-gallery" class="modal-gallery"></div>
       </div>
     </div>
@@ -847,8 +859,8 @@
     <div id="victoria-festival-modal" class="modal">
       <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <h2>Victoria Spring Festival</h2>
-        <p class="modal-intro-text"></p>
+        <h2 class="modal-title">Victoria Spring Festival</h2>
+        <p class="modal-intro" id="victoria-festival-intro-text"></p>
         <div id="victoria-festival-gallery" class="modal-gallery"></div>
       </div>
     </div>
@@ -857,9 +869,64 @@
     <div id="seerah-modal" class="modal">
       <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <h2>5th Annual Seerah Conference</h2>
-        <p class="modal-intro-text"></p>
+        <h2 class="modal-title">5th Annual Seerah Conference</h2>
+        <p class="modal-intro" id="seerah-intro-text"></p>
         <div id="seerah-gallery" class="modal-gallery"></div>
+      </div>
+    </div>
+
+    <!-- Past Events Modals -->
+    <div id="mufti-tauqeer-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title">SHAYKH MUFTI TAUQEER Visit</h2>
+        <p class="modal-intro" id="mufti-tauqeer-intro-text"></p>
+        <div id="mufti-tauqeer-gallery" class="modal-gallery"></div>
+      </div>
+    </div>
+
+    <div id="al-itqan-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title">Al Itqan Eid Carnival 2025</h2>
+        <p class="modal-intro" id="al-itqan-intro-text"></p>
+        <div id="al-itqan-gallery" class="modal-gallery"></div>
+      </div>
+    </div>
+
+    <div id="melton-eid-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title">Melton Eid Fest</h2>
+        <p class="modal-intro" id="melton-eid-intro-text"></p>
+        <div id="melton-eid-gallery" class="modal-gallery"></div>
+      </div>
+    </div>
+
+    <div id="eid-show-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title">Eid Show Melbourne</h2>
+        <p class="modal-intro" id="eid-show-intro-text"></p>
+        <div id="eid-show-gallery" class="modal-gallery"></div>
+      </div>
+    </div>
+
+    <div id="vmm-market-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title">VMM Summer Night Market</h2>
+        <p class="modal-intro" id="vmm-market-intro-text"></p>
+        <div id="vmm-market-gallery" class="modal-gallery"></div>
+      </div>
+    </div>
+
+    <div id="maktab-jalsa-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 class="modal-title">Maktab Point Cook End Year Jalsa</h2>
+        <p class="modal-intro" id="maktab-jalsa-intro-text"></p>
+        <div id="maktab-jalsa-gallery" class="modal-gallery"></div>
       </div>
     </div>
 
@@ -907,105 +974,129 @@
         },
       ];
 
+      // Updated past events with proper data structure
+
       const pastEvents = [
         {
+          id: "mufti-tauqeer",
           title: "SHAYKH MUFTI TAUQEER Visit",
-          image:
-            "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-          link: "https://www.instagram.com/p/DM5X3SCSiFo/?img_index=1",
+          date: "15 May 2024",
+          location: "Zuhd Maktab, Melbourne",
+          image: "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib-06.png",
+          intro:
+            "A special visit by Shaykh Mufti Tauqeer Sahib to our community.",
+          images: [
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-02.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-04.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-06.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-08.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-10.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-12.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-14.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-16.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib-06.png",
+          ],
         },
         {
+          id: "eid-show",
+          title: "Eid Show Melbourne",
+          date: "11 April 2025",
+          location: "Melbourne Showgrounds",
+          image:
+            "events/02 EID SHOW/MELBOURINE.png",
+          intro:
+            "Zuhd's participation in the Melbourne Eid Show with interactive exhibits.",
+          images: [
+            "events/02 EID SHOW/Artboard 2.png",
+            "events/02 EID SHOW/Post 2-02.png",
+            "events/02 EID SHOW/MELBOURINE.png",
+          ],
+        },
+        {
+          id: "al-itqan",
           title: "Al Itqan Eid Carnival 2025",
+          date: "12 April 2025",
+          location: "Al Itqan Academy, Melbourne",
           image:
-            "https://images.unsplash.com/photo-1581578021517-5d8ad8597852?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-          link: "https://www.instagram.com/p/DIiV2xeS0hW/",
+            "events/03 Zuhd at Al-Itqan Eid Carnival 2025/Zuhd at Al-Itqan Eid Carnival 2025 2-01.png",
+          intro:
+            "Zuhd participation at the Al Itqan Eid Carnival with stalls and activities.",
+          images: [
+            "events/03 Zuhd at Al-Itqan Eid Carnival 2025/Zuhd at Al-Itqan Eid Carnival 2025 2-01.png",
+          ],
         },
         {
-          title: "Melton Eid fest",
-          image:
-            "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-          link: "https://www.instagram.com/p/DId0pywy-Mi/",
-        },
-        {
-          title: "Eid show Melbourne",
-          image:
-            "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-          link: "https://www.instagram.com/p/DIOb3bASGjL/",
-        },
-        {
-          title: "Vmm Summer night market",
-          image:
-            "https://images.unsplash.com/photo-1580153434318-6a13e5c3f6cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-          link: "https://www.instagram.com/p/DDi7sssyAsF/",
-        },
-        {
-          title: "Maktab Point Cook End year jalsa",
-          image:
-            "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-          link: "https://www.instagram.com/p/DDd6Cnzyd39/",
-        },
+          id: "vmm-market",
+          title: "VMM Summer Night Market",
+          date: "20 February 2025",
+          location: "VMM Community Center",
+          image: "events/04 VMM Summer Night Market/Poster-01.png",
+          intro:
+            "Summer night market event with food, shopping and entertainment.",
+          images: ["events/04 VMM Summer Night Market/Poster-01.png"],
+        }
       ];
 
       // Function to create event card HTML
       function createEventCard(event, isPast = false) {
         if (isPast) {
           return `
-        <div class="event-card">
-          <img src="${event.image}" alt="${event.title}" class="card-image" />
-          <div class="card-content">
-            <h3 class="card-title">${event.title}</h3>
-            <a href="${event.link}" target="_blank" class="card-cta">
-              View Photos
-            </a>
+          <div class="event-card">
+            <img src="${event.image}" alt="${event.title}" class="card-image" />
+            <div class="card-content">
+              <h3 class="card-title">${event.title}</h3>
+              <a class="card-cta open-modal-btn" data-modal="${event.id}-modal">
+                View Photos
+              </a>
+            </div>
           </div>
-        </div>
-      `;
+        `;
         } else {
           if (event.isSeries) {
             return `
-          <div class="event-card">
-            <div class="event-badge">Tour Series</div>
-            <img src="${event.image}" alt="${event.title}" class="card-image" />
-            <div class="card-content">
-              <h3 class="card-title">${event.title}</h3>
-              <div class="card-meta">
-                <div class="card-meta-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <span>${event.dateRange}</span>
+            <div class="event-card">
+              <div class="event-badge">Tour Series</div>
+              <img src="${event.image}" alt="${event.title}" class="card-image" />
+              <div class="card-content">
+                <h3 class="card-title">${event.title}</h3>
+                <div class="card-meta">
+                  <div class="card-meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>${event.dateRange}</span>
+                  </div>
+                  <div class="card-meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${event.locations}</span>
+                  </div>
                 </div>
-                <div class="card-meta-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>${event.locations}</span>
-                </div>
+                <a class="card-cta open-modal-btn" data-modal="trumpet-modal">
+                  Learn More
+                </a>
               </div>
-              <a class="card-cta open-modal-btn" data-modal="trumpet-modal">
-                Learn More
-              </a>
             </div>
-          </div>
-        `;
+          `;
           } else {
             return `
-          <div class="event-card">
-            <img src="${event.image}" alt="${event.title}" class="card-image" />
-            <div class="card-content">
-              <h3 class="card-title">${event.title}</h3>
-              <div class="card-meta">
-                <div class="card-meta-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <span>${event.date}</span>
+            <div class="event-card">
+              <img src="${event.image}" alt="${event.title}" class="card-image" />
+              <div class="card-content">
+                <h3 class="card-title">${event.title}</h3>
+                <div class="card-meta">
+                  <div class="card-meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>${event.date}</span>
+                  </div>
+                  <div class="card-meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${event.location}</span>
+                  </div>
                 </div>
-                <div class="card-meta-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>${event.location}</span>
-                </div>
+                <a class="card-cta open-modal-btn" data-modal="${event.id}-modal">
+                  Learn More
+                </a>
               </div>
-              <a class="card-cta open-modal-btn" data-modal="${event.id}-modal">
-                Learn More
-              </a>
             </div>
-          </div>
-        `;
+          `;
           }
         }
       }
@@ -1111,19 +1202,27 @@
           "Join us for this exclusive multi-city tour series 'Before the Trumpet: A World on the Edge'. This profound event explores critical themes facing our world today through an Islamic lens. Featuring renowned scholars and engaging discussions, this series promises to be an enlightening experience for all attendees across Australia.",
       };
 
-      // Generic modal builder with slider support
+      // Generic modal builder with slider support (both prev and next buttons)
       function buildEventModal(event, modalId) {
-        const gallery = document.getElementById(
-          `${event.id || "event"}-gallery`
-        );
+        // Set intro text
+        const introElement = document.querySelector(`#${modalId} .modal-intro`);
+        if (introElement) {
+          introElement.innerText = event.intro;
+        }
+
+        // Get the correct gallery element
+        let gallery;
+        if (event.isSeries) {
+          gallery = document.getElementById("trumpet-gallery");
+        } else {
+          gallery = document.getElementById(`${event.id}-gallery`);
+        }
+
+        if (!gallery) return;
+
         gallery.innerHTML = "";
 
-        // Intro text
-        document.querySelector(
-          `#${modalId} .modal-intro-text, #${modalId} #modal-intro-text`
-        ).innerText = event.intro;
-
-        // Loop through each sub-event (for Trumpet series) or just once for others
+        // For series events, we need to handle multiple sub-events
         const eventsToRender = event.isSeries ? event.events : [event];
 
         eventsToRender.forEach((ev, index) => {
@@ -1134,45 +1233,61 @@
           slider.className = "event-slider";
           slider.setAttribute("data-event-index", index);
 
+          // Create slides
           ev.images.forEach((imgSrc, i) => {
             const slide = document.createElement("div");
             slide.className = "slide";
-            if (i === 0) slide.classList.add("active"); // first image visible
+            if (i === 0) slide.classList.add("active");
+
             const img = document.createElement("img");
             img.src = imgSrc;
             img.alt = `${ev.caption || event.title} photo ${i + 1}`;
+            img.onerror = function () {
+              this.src =
+                "https://via.placeholder.com/600x400/0f3d2e/ffffff?text=Image+Not+Found";
+            };
+
             slide.appendChild(img);
             slider.appendChild(slide);
           });
 
-          // Only Next button (looping forward)
+          // Create both navigation buttons
+          const prevBtn = document.createElement("button");
+          prevBtn.className = "slider-btn prev-btn";
+          prevBtn.innerHTML = "&#10094;";
+
           const nextBtn = document.createElement("button");
           nextBtn.className = "slider-btn next-btn";
           nextBtn.innerHTML = "&#10095;";
 
-          // Caption
+          // Create caption
           const caption = document.createElement("div");
           caption.className = "event-caption";
           caption.innerHTML = event.isSeries
             ? `${ev.caption} <br> ${ev.date} | ${ev.location}`
             : `${event.date} | ${event.location}`;
 
+          // Append everything
           wrapper.appendChild(slider);
+          wrapper.appendChild(prevBtn);
           wrapper.appendChild(nextBtn);
           wrapper.appendChild(caption);
           gallery.appendChild(wrapper);
 
-          // Slider logic
+          // Slider functionality
           let currentSlide = 0;
-          nextBtn.onclick = () => showSlide(slider, 1);
+          const slides = slider.querySelectorAll(".slide");
 
-          function showSlide(slider, direction) {
-            const slides = slider.querySelectorAll(".slide");
+          function showSlide(direction) {
             slides[currentSlide].classList.remove("active");
             currentSlide =
               (currentSlide + direction + slides.length) % slides.length;
             slides[currentSlide].classList.add("active");
           }
+
+          // Add event listeners to buttons
+          prevBtn.onclick = () => showSlide(-1);
+          nextBtn.onclick = () => showSlide(1);
         });
       }
 
@@ -1189,12 +1304,29 @@
             const modalId = e.target.getAttribute("data-modal");
             const modal = document.getElementById(modalId);
 
-            const allEvents = [trumpetSeries, ...otherUpcomingEvents];
-            const eventData = allEvents.find((ev) =>
-              ev.isSeries
-                ? modalId.includes("trumpet")
-                : `${ev.id}-modal` === modalId
-            );
+            if (!modal) return;
+
+            // Find the event data
+            let eventData = null;
+
+            // Check if it's the trumpet series
+            if (modalId === "trumpet-modal") {
+              eventData = trumpetSeries;
+            }
+            // Check if it's an upcoming event
+            else {
+              const allUpcomingEvents = [trumpetSeries, ...otherUpcomingEvents];
+              eventData = allUpcomingEvents.find(
+                (ev) => `${ev.id}-modal` === modalId
+              );
+
+              // If not found in upcoming, check past events
+              if (!eventData) {
+                eventData = pastEvents.find(
+                  (ev) => `${ev.id}-modal` === modalId
+                );
+              }
+            }
 
             if (eventData) {
               buildEventModal(eventData, modalId);
@@ -1234,8 +1366,10 @@
     </script>
 
     <script src="navbar.js"></script>
-        <script src="https://static.elfsight.com/platform/platform.js" async></script>
-
+    <script
+      src="https://static.elfsight.com/platform/platform.js"
+      async
+    ></script>
     <script src="/cacheBuster.js"></script>
   </body>
 </html>
