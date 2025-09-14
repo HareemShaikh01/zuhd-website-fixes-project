@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single_event</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- GSAP core + ScrollTrigger CDN -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+    ></script>
+    <!-- Your custom JS -->
+    <script defer src="script.js"></script>
+    <style>
+      :root {
+        --primary-color: #0f3d2e; /* Deep green */
+        --gold: #c6a769;
+        --deep-green: #0f3d2e;
+        --light-gold: #e4d6b5;
+        --light-bg: #f8f8f8;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: white;
+        line-height: 1.6;
+        background-color: var(--light-bg);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Header Styles */
+      .lectures-header {
+        max-width: 800px;
+      }
+
+      .headings {
+        color: var(--deep-green);
+        font-size: 2rem;
+        margin-top: 80px;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        padding: 20px 40px;
+        color: var(--deep-green);
+        background-color: var(--light-bg);
+      }
+
+      .event-intro p {
+        margin-bottom: 50px;
+        font-size: 1.3rem;
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      /* Image Gallery */
+      .image-gallery {
+        display: grid;
+        grid-template-columns: 1fr; /* mobile: full width */
+        gap: 30px;
+        margin: 30px auto;
+        justify-content: center;
+      }
+
+      /* Tablet (≥768px) → 2 columns */
+      @media (min-width: 768px) {
+        .image-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Desktop (≥1024px) → 4 columns */
+      @media (min-width: 1024px) {
+        .image-gallery {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Carousel */
+      .carousel-container {
+        position: relative;
+        margin: 40px auto;
+        width: 70%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px var(--deep-green);
+        background-color: var(--deep-green);
+      }
+
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .carousel-item {
+        min-width: 100%;
+        height: 500px;
+      }
+
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: top;
+      }
+
+      .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        z-index: 10;
+      }
+
+      .carousel-control:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .carousel-control.prev {
+        left: 15px;
+      }
+
+      .carousel-control.next {
+        right: 15px;
+      }
+
+      .carousel-indicators {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+      }
+
+      .carousel-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .carousel-indicator.active {
+        background-color: white;
+      }
+
+      /* Links Section */
+      .links-section {
+        margin: 30px 0;
+      }
+
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .link-card {
+        background-color: var(--light-bg);
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #eaeaea;
+      }
+
+      .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-color: var(--gold);
+      }
+
+      .link-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .link-content {
+        flex: 1;
+      }
+
+      .link-content h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+      }
+
+      .link-content p {
+        margin: 0;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Past Events Section */
+      .past-events-section {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 2px solid var(--gold);
+      }
+
+      .section-heading {
+        font-family: "Amiri", serif;
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 15px;
+        text-align: center;
+      }
+
+      .section-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--gold);
+      }
+
+      .past-event {
+        background-color: white;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .past-event:hover {
+        transform: translateY(-5px);
+      }
+
+      .past-event-heading {
+        font-family: "Amiri", serif;
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Footer Styles */
+      .footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 40px 0 20px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--gold);
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.3s ease;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--gold);
+      }
+
+      .newsletter p {
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+      }
+
+      .newsletter-form button {
+        padding: 12px 20px;
+        background-color: var(--gold);
+        color: var(--deep-green);
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .newsletter-form button:hover {
+        background-color: #d4b977;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+      }
+
+      .social-link:hover {
+        background-color: var(--gold);
+        color: var(--deep-green);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+
+      @media (max-width: 768px) {
+        .lectures-title {
+          font-size: 2.2rem;
+        }
+
+        .content-section {
+          padding: 25px;
+        }
+
+        .carousel-item {
+          height: 300px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .footer-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .image-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .links-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .carousel-item {
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div id="navbar"></div>
+    </nav>
+    <section class="banner-wrapper">
+      <main class="lectures-main">
+        <div class="container">
+          <!-- Dynamic Header -->
+          <div class="lectures-header">
+            <h1 class="lectures-title" id="dynamic-title">
+              ZUHD ISLAMIC LECTURES
+            </h1>
+            <p class="lectures-subtitle">
+              Explore a collection of enlightening content to deepen your
+              understanding.
+            </p>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <div class="main-content">
+      <!-- Event content will be dynamically inserted here -->
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-column">
+            <h3>zuhd Academy</h3>
+            <ul>
+              <li><a href="/about-zuhd.html">About ZUHD</a></li>
+              <li><a href="/zuhd-lectures.html">ZUHD Lectures</a></li>
+              <li><a href="/desclimer.html">Disclaimer</a></li>
+              <li>
+                <a href="/after-school-classes.html">After School Classes</a>
+              </li>
+              <li><a href="/terms.html">Terms and conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/store.html">zuhd Store</a></li>
+              <li><a href="/donate.html">Donate Now</a></li>
+              <li><a href="/ziyarat.html">Ziyarat</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><a href="/our-story.html">Our Story</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/about.html">About Us</a></li>
+              <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column newsletter">
+            <h3>Sign Up and Save</h3>
+            <p>
+              Be the first to receive Islamic guidance, inspiring articles, and
+              special offers.
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">→</button>
+            </form>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/zuhd.au"
+                class="social-link"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/zuhd_au"
+                class="social-link"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@zuhd.store"
+                class="social-link"
+                title="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@zuhdau"
+                class="social-link"
+                title="YouTube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2024 Zuhd Guidance All rights reserved.</div>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Refund Policy</a>
+            <a href="#">Accessibility Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Event data
+      const eventsData = [
+        {
+          id: 1,
+          heading: "The Ultimate Success 2025 Australian Tour",
+          introduction: [
+            "Before the Trumpet: A World on the Edge",
+            "This national tour brings world-renowned scholars and reciters to Perth, Brisbane, Sydney, and Melbourne with one powerful mission to awaken hearts and strengthen faith. Organized by Al-Itqan Academy, the event also supports their vision of building a mosque and Quran Education Centre in Narre Warren, creating a lasting legacy for future generations.",
+          ],
+          images: [
+            "events/al atqan academy/A3 BRISBANE.png",
+            "events/al atqan academy/A3 MELBOURNE.png",
+            "events/al atqan academy/A3 PERTH.png",
+            "events/al atqan academy/A3 SYDNEY.png",
+          ],
+          carousels: [
+            [
+              "events/al atqan academy/brisbine/0.png",
+              "events/al atqan academy/brisbine/1.jpg",
+              "events/al atqan academy/brisbine/2.jpg",
+              "events/al atqan academy/brisbine/3.jpg",
+            ],
+            [
+              "events/al atqan academy/melbourne/0.png",
+              "events/al atqan academy/melbourne/1.jpg",
+              "events/al atqan academy/melbourne/2.jpg",
+              "events/al atqan academy/melbourne/3.jpg",
+            ],
+            [
+              "events/al atqan academy/perth/0.png",
+              "events/al atqan academy/perth/1.jpg",
+              "events/al atqan academy/perth/2.jpg",
+              "events/al atqan academy/perth/3.jpg",
+            ],
+            [
+              "events/al atqan academy/sydney/0.png",
+              "events/al atqan academy/sydney/1.png",
+              "events/al atqan academy/sydney/2.jpg",
+              "events/al atqan academy/sydney/3.jpg",
+            ],
+          ],
+          links: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+          pastEvents: [],
+        },
+        {
+          id: 2,
+          heading: "Palestine National Day 2025",
+          introduction: [
+            "Commemorated on 15 November, Palestine National Day marks the 1988 declaration of independence and stands as a symbol of resilience and hope.",
+            "Celebrated at Federation Square in Melbourne, it showcases Palestinian culture through food, music, art, and storytelling. Since 2016, the event has grown into a platform of solidarity, uniting communities across Australia.",
+          ],
+          carousels: [
+            [
+              "events/palestine/image (1).png",
+              "events/palestine/image.png",
+              "events/palestine/img.jpeg",
+            ],
+          ],
+          links: [],
+          pastEvents: [],
+        },
+        {
+          id: 3,
+          heading: "AMCC Events",
+          introduction: [
+            "The Victoria Spring Festival 2025 brings people of all cultures together for three days of fun, food, and festivities in Melton.",
+            "From camel rides and amusement attractions to food trucks, markets, fireworks, and live performances, there's something for everyone. Organized by AMCC, the festival celebrates diversity and community spirit with free entry for all.",
+          ],
+          images: [
+            "events/victoria/Artboard 1.png",
+            "events/victoria/Artboard 2.png",
+          ],
+          carousels: [],
+          links: [],
+          pastEvents: [
+            {
+              heading: "Melton Eid Fest 2025",
+              introduction: [
+                "The Melton Eid Fest 2025 lit up Melton with two days of joy, culture, and celebration.",
+                "Families enjoyed camel rides, thrilling amusements, vibrant markets, delicious food, and cultural activities in a welcoming space. Organized by AMCC, the festival celebrated Eid as a time of togetherness and cultural pride, open to all backgrounds.",
+              ],
+              images: [
+                "https://source.unsplash.com/800x600/?eid",
+                "https://source.unsplash.com/800x600/?camel",
+                "https://source.unsplash.com/800x600/?festival",
+              ],
+              carousels: [
+                [
+                  "https://source.unsplash.com/800x600/?market",
+                  "https://source.unsplash.com/800x600/?food",
+                ],
+              ],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: 4,
+          heading: "5th Annual Seerah Conference 2025 ✨",
+          introduction: [
+            "The Seerah Conference brings together scholars, teachers, and community leaders to reflect on the life and legacy of the Prophet ﷺ.",
+            "Hosted at the Keysborough Turkish Islamic & Cultural Centre, this year's gathering will feature renowned speakers and heartfelt discussions. Join us on 21st September to learn, connect, and be inspired while sharing in the reward of spreading the Prophet's ﷺ message.",
+          ],
+          images: [
+            "https://source.unsplash.com/800x600/?conference",
+            "https://source.unsplash.com/800x600/?islamic",
+          ],
+          carousels: [],
+          links: [
+            "https://www.youtube.com/watch?v=xyrkeq0Zfzc",
+            "https://www.youtube.com/watch?v=uDcpzzIM4_c",
+          ],
+          pastEvents: [
+            {
+              heading: "Annual Seerah Conference Melbourne 2024",
+              introduction: [
+                "Reflecting on the 2024 Seerah Conference, this gathering brought together scholars and community members to share knowledge and inspiration.",
+              ],
+              images: [
+                "https://source.unsplash.com/800x600/?conference2024",
+                "https://source.unsplash.com/800x600/?community",
+              ],
+              carousels: [],
+              links: ["https://www.youtube.com/watch?v=xyrkeq0Zfzc"],
+            },
+            {
+              heading: "Annual Seerah Conference 2023",
+              introduction: [
+                "The 2023 edition of the Seerah Conference united the community for reflection and learning.",
+              ],
+              images: [
+                "https://source.unsplash.com/800x600/?conference2023",
+                "https://source.unsplash.com/800x600/?learning",
+              ],
+              carousels: [],
+              links: ["https://www.youtube.com/watch?v=uDcpzzIM4_c"],
+            },
+          ],
+        },
+        {
+          id: 5,
+          heading: "Shaykh Mufti Tauqeer 2025",
+          introduction: [
+            "Shaykh Mufti Tauqeer's Melbourne tour brought together families and community members for a series of uplifting sessions on Hadith, Seerah, parenting, emotional intelligence, and the future of Islam.",
+            "Joined by esteemed international scholars, the program provided a transformative experience that inspired hearts, strengthened faith, and deepened the community's connection to the Deen.",
+          ],
+          images: [
+            "https://source.unsplash.com/800x600/?lecture",
+            "https://source.unsplash.com/800x600/?islamic",
+          ],
+          carousels: [],
+          links: [],
+          pastEvents: [],
+        },
+        {
+          id: 6,
+          heading: "The Eid Show",
+          introduction: [
+            "The Eid Show is one of Australia's biggest and most successful multicultural Eid celebrations, hosted annually in Sydney and Melbourne.",
+            "After a massive 2025 premier, the event continues to grow, bringing together tens of thousands of people for food, fun, and cultural connection.",
+          ],
+          images: [
+            "https://source.unsplash.com/800x600/?eid",
+            "https://source.unsplash.com/800x600/?celebration",
+            "https://source.unsplash.com/800x600/?multicultural",
+          ],
+          carousels: [
+            [
+              "https://source.unsplash.com/800x600/?food",
+              "https://source.unsplash.com/800x600/?fun",
+            ],
+          ],
+          links: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+          pastEvents: [],
+        },
+      ];
+
+      const titleElement = document.getElementById("dynamic-title");
+      const mainContent = document.querySelector(".main-content");
+
+      function getUrlParams() {
+        const params = {};
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        for (const [key, value] of urlParams) params[key] = value;
+        return params;
+      }
+
+      function createImageGallery(images) {
+        if (!images || images.length === 0) return "";
+        return `
+      <h1 class="section-heading">Event Gallery</h1>
+      <div class="image-gallery">
+        ${images
+          .map(
+            (img) =>
+              `<div class="gallery-item"><img src="${img}" alt="Event image"></div>`
+          )
+          .join("")}
+      </div>`;
+      }
+
+      function createCarousel(allCarousels) {
+        if (!allCarousels || allCarousels.length === 0) return "";
+        return allCarousels
+          .map((carouselItems, carouselIndex) => {
+            if (!carouselItems || carouselItems.length === 0) return "";
+            return `
+        <h1 class="section-heading">Event Slides ${carouselIndex + 1}</h1>
+        <div class="carousel-container">
+          <div class="carousel" id="eventCarousel${carouselIndex}">
+            ${carouselItems
+              .map(
+                (item) =>
+                  `<div class="carousel-item"><img src="${item}" alt="Event carousel image"></div>`
+              )
+              .join("")}
+          </div>
+          <button class="carousel-control prev" onclick="moveCarousel(-1, ${carouselIndex})"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-control next" onclick="moveCarousel(1, ${carouselIndex})"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-indicators">
+            ${carouselItems
+              .map(
+                (_, i) =>
+                  `<div class="carousel-indicator ${
+                    i === 0 ? "active" : ""
+                  }" onclick="showCarouselSlide(${i}, ${carouselIndex})"></div>`
+              )
+              .join("")}
+          </div>
+        </div>`;
+          })
+          .join("");
+      }
+
+      function createLinksSection(links) {
+        if (!links || links.length === 0) return "";
+        return `
+      <div class="links-section">
+        <h2 class="section-heading">Related Content</h2>
+        <div class="links-grid">
+          ${links
+            .map(
+              (link) => `
+            <a href="${link}" target="_blank" class="link-card">
+              <div class="link-icon"><i class="fab fa-youtube"></i></div>
+              <div class="link-content">
+                <h3>Watch on YouTube</h3>
+                <p>Click to view related content</p>
+              </div>
+            </a>`
+            )
+            .join("")}
+        </div>
+      </div>`;
+      }
+
+      function createPastEventsSection(pastEvents) {
+        if (!pastEvents || pastEvents.length === 0) return "";
+        return `
+      <div class="past-events-section">
+        <h2 class="section-heading">PAST EVENTS</h2>
+        ${pastEvents
+          .map(
+            (event) => `
+          <div class="past-event">
+            <h3 class="past-event-heading">${event.heading}</h3>
+            <div class="event-intro">
+              ${event.introduction.map((p) => `<p>${p}</p>`).join("")}
+            </div>
+            ${createImageGallery(event.images)}
+            ${createCarousel(event.carousels)}
+            ${createLinksSection(event.links)}
+          </div>`
+          )
+          .join("")}
+      </div>`;
+      }
+
+      // Carousel functionality
+      const currentSlides = {};
+
+      function moveCarousel(direction, carouselIndex) {
+        const carousel = document.getElementById(
+          `eventCarousel${carouselIndex}`
+        );
+        const slides = carousel.querySelectorAll(".carousel-item");
+        const indicators = carousel.parentElement.querySelectorAll(
+          ".carousel-indicator"
+        );
+
+        if (!currentSlides[carouselIndex]) currentSlides[carouselIndex] = 0;
+        currentSlides[carouselIndex] =
+          (currentSlides[carouselIndex] + direction + slides.length) %
+          slides.length;
+
+        carousel.style.transform = `translateX(-${
+          currentSlides[carouselIndex] * 100
+        }%)`;
+
+        indicators.forEach((indicator, i) => {
+          indicator.classList.toggle(
+            "active",
+            i === currentSlides[carouselIndex]
+          );
+        });
+      }
+
+      function showCarouselSlide(index, carouselIndex) {
+        const carousel = document.getElementById(
+          `eventCarousel${carouselIndex}`
+        );
+        const indicators = carousel.parentElement.querySelectorAll(
+          ".carousel-indicator"
+        );
+
+        currentSlides[carouselIndex] = index;
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+
+        indicators.forEach((indicator, i) => {
+          indicator.classList.toggle("active", i === index);
+        });
+      }
+
+      // Load event content
+      document.addEventListener("DOMContentLoaded", function () {
+        const params = getUrlParams();
+        const eventId = params.id ? parseInt(params.id) : 1;
+        const event = eventsData.find((e) => e.id === eventId) || eventsData[0];
+
+        titleElement.textContent = params.title
+          ? decodeURIComponent(params.title)
+          : event.heading;
+
+        const eventContent = `
+      <div class="content-section">
+        <div class="event-intro">
+          ${event.introduction.map((p) => `<p>${p}</p>`).join("")}
+        </div>
+        ${createImageGallery(event.images)}
+        <br><br>
+        ${createCarousel(event.carousels)}
+        <br><br>
+        ${createLinksSection(event.links)}
+        <br><br>
+        ${createPastEventsSection(event.pastEvents)}
+      </div>
+    `;
+
+        mainContent.innerHTML = eventContent;
+
+        // Newsletter form
+        const newsletterForm = document.querySelector(".newsletter-form");
+        if (newsletterForm) {
+          newsletterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with: ${email}`);
+            this.reset();
+          });
+        }
+      });
+    </script>
+
+    <script src="navbar.js"></script>
+    <script src="/cacheBuster.js"></script>
+  </body>
+</html>
