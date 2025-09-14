@@ -71,10 +71,11 @@
       }
 
       .event-intro p {
-        margin-bottom: 50px;
         font-size: 1.3rem;
         line-height: 1.8;
         text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
       }
 
       /* Image Gallery */
@@ -102,7 +103,6 @@
 
       .gallery-item {
         position: relative;
-        border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
@@ -115,6 +115,7 @@
       .gallery-item img {
         width: 100%;
         height: 100%;
+        border-radius: 18px;
         object-fit: cover;
         transition: transform 0.5s ease;
       }
@@ -262,17 +263,12 @@
       }
 
       /* Past Events Section */
-      .past-events-section {
-        margin-top: 50px;
-        padding-top: 30px;
-        border-top: 2px solid var(--gold);
-      }
 
       .section-heading {
         font-family: "Amiri", serif;
         font-size: 2.2rem;
         color: var(--primary-color);
-        margin-bottom: 30px;
+        margin: 50px 0;
         position: relative;
         padding-bottom: 15px;
         text-align: center;
@@ -290,12 +286,8 @@
       }
 
       .past-event {
-        background-color: white;
-        border-radius: 8px;
         padding: 30px;
         margin-bottom: 30px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
       }
 
       .past-event:hover {
@@ -303,6 +295,7 @@
       }
 
       .past-event-heading {
+        text-align: center;
         font-family: "Amiri", serif;
         font-size: 1.8rem;
         color: var(--primary-color);
@@ -675,15 +668,14 @@
                 "The Melton Eid Fest 2025 lit up Melton with two days of joy, culture, and celebration.",
                 "Families enjoyed camel rides, thrilling amusements, vibrant markets, delicious food, and cultural activities in a welcoming space. Organized by AMCC, the festival celebrated Eid as a time of togetherness and cultural pride, open to all backgrounds.",
               ],
-              images: [
-                "https://source.unsplash.com/800x600/?eid",
-                "https://source.unsplash.com/800x600/?camel",
-                "https://source.unsplash.com/800x600/?festival",
-              ],
+              images: [],
               carousels: [
                 [
-                  "https://source.unsplash.com/800x600/?market",
-                  "https://source.unsplash.com/800x600/?food",
+                  "events/02 EID SHOW/melton (1).jpeg",
+                  "events/02 EID SHOW/melton (2).jpeg",
+                  "events/02 EID SHOW/melton (3).jpeg",
+                  "events/02 EID SHOW/melton (4).jpeg",
+                  "events/02 EID SHOW/melton (5).jpeg",
                 ],
               ],
               links: [],
@@ -692,30 +684,23 @@
         },
         {
           id: 4,
-          heading: "5th Annual Seerah Conference 2025 ✨",
+          heading: "5th Annual Seerah Conference 2025",
           introduction: [
             "The Seerah Conference brings together scholars, teachers, and community leaders to reflect on the life and legacy of the Prophet ﷺ.",
             "Hosted at the Keysborough Turkish Islamic & Cultural Centre, this year's gathering will feature renowned speakers and heartfelt discussions. Join us on 21st September to learn, connect, and be inspired while sharing in the reward of spreading the Prophet's ﷺ message.",
           ],
           images: [
-            "https://source.unsplash.com/800x600/?conference",
-            "https://source.unsplash.com/800x600/?islamic",
+            "events/annual seerah conference/5th annual serrah conference.png",
           ],
           carousels: [],
-          links: [
-            "https://www.youtube.com/watch?v=xyrkeq0Zfzc",
-            "https://www.youtube.com/watch?v=uDcpzzIM4_c",
-          ],
+          links: [],
           pastEvents: [
             {
               heading: "Annual Seerah Conference Melbourne 2024",
               introduction: [
                 "Reflecting on the 2024 Seerah Conference, this gathering brought together scholars and community members to share knowledge and inspiration.",
               ],
-              images: [
-                "https://source.unsplash.com/800x600/?conference2024",
-                "https://source.unsplash.com/800x600/?community",
-              ],
+              images: [],
               carousels: [],
               links: ["https://www.youtube.com/watch?v=xyrkeq0Zfzc"],
             },
@@ -724,10 +709,7 @@
               introduction: [
                 "The 2023 edition of the Seerah Conference united the community for reflection and learning.",
               ],
-              images: [
-                "https://source.unsplash.com/800x600/?conference2023",
-                "https://source.unsplash.com/800x600/?learning",
-              ],
+              images: [],
               carousels: [],
               links: ["https://www.youtube.com/watch?v=uDcpzzIM4_c"],
             },
@@ -741,8 +723,15 @@
             "Joined by esteemed international scholars, the program provided a transformative experience that inspired hearts, strengthened faith, and deepened the community's connection to the Deen.",
           ],
           images: [
-            "https://source.unsplash.com/800x600/?lecture",
-            "https://source.unsplash.com/800x600/?islamic",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-02.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-04.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-06.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-08.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-10.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-12.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-14.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib SP-16.png",
+            "events/01 Mufti Tauqeer Sahib/Mufti Tauqeer Sahib-06.png",
           ],
           carousels: [],
           links: [],
@@ -756,14 +745,37 @@
             "After a massive 2025 premier, the event continues to grow, bringing together tens of thousands of people for food, fun, and cultural connection.",
           ],
           images: [
-            "https://source.unsplash.com/800x600/?eid",
-            "https://source.unsplash.com/800x600/?celebration",
-            "https://source.unsplash.com/800x600/?multicultural",
+            "events/02 EID SHOW/MELBOURINE.png",
+            "events/02 EID SHOW/corousel1.jpeg",
+            "events/02 EID SHOW/Artboard 2.png",
           ],
           carousels: [
             [
-              "https://source.unsplash.com/800x600/?food",
-              "https://source.unsplash.com/800x600/?fun",
+              "events/02 EID SHOW/corousel1 (1).jpeg",
+              "events/02 EID SHOW/corousel1 (2).jpeg",
+              "events/02 EID SHOW/corousel1 (3).jpeg",
+              "events/02 EID SHOW/corousel1 (4).jpeg",
+            ],
+            [
+              "events/02 EID SHOW/eid+experience (1).jpeg",
+              "events/02 EID SHOW/eid+experience (2).jpeg",
+              "events/02 EID SHOW/eid+experience (3).jpeg",
+              "events/02 EID SHOW/eid+experience (1).png",
+              "events/02 EID SHOW/eid+experience (2).png",
+            ],
+            [
+              "events/02 EID SHOW/melbourine (1).jpeg",
+              "events/02 EID SHOW/melbourine (2).jpeg",
+              "events/02 EID SHOW/melbourine (3).jpeg",
+              "events/02 EID SHOW/melbourine (4).jpeg",
+              "events/02 EID SHOW/melbourine (5).jpeg",
+            ],
+            [
+              "events/02 EID SHOW/melton (1).jpeg",
+              "events/02 EID SHOW/melton (2).jpeg",
+              "events/02 EID SHOW/melton (3).jpeg",
+              "events/02 EID SHOW/melton (4).jpeg",
+              "events/02 EID SHOW/melton (5).jpeg",
             ],
           ],
           links: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
@@ -930,6 +942,7 @@
 
         const eventContent = `
       <div class="content-section">
+        <h1 class="section-heading">Introduction</h1>
         <div class="event-intro">
           ${event.introduction.map((p) => `<p>${p}</p>`).join("")}
         </div>
