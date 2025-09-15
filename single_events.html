@@ -161,6 +161,23 @@
         object-position: top;
       }
 
+      @media (max-width: 768px) {
+
+        .carousel-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+        }
+
+        .carousel-container{
+          width: 100%;
+        }
+
+        .main-content{
+          padding: 8px;
+        }
+      }
       .carousel-control {
         position: absolute;
         top: 50%;
@@ -437,16 +454,7 @@
         padding-bottom: 10px;
       }
 
-      .footer-column h3::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background-color: var(--gold);
-      }
-
+    
       .footer-column ul {
         list-style: none;
         padding: 0;
