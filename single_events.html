@@ -56,6 +56,15 @@
       .lectures-header {
         max-width: 800px;
       }
+      .lectures-title {
+        font-size: 3rem;
+        margin: 24px auto;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 1200px;
+      }
 
       .headings {
         color: var(--deep-green);
@@ -210,12 +219,6 @@
         margin: 30px 0;
       }
 
-      .links-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-
       .link-card {
         background-color: var(--light-bg);
         border-radius: 8px;
@@ -260,6 +263,111 @@
         margin: 0;
         color: #666;
         font-size: 0.9rem;
+      }
+
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          4,
+          1fr
+        ); /* always 4 equal columns on desktop */
+        gap: 20px;
+        justify-items: center; /* center cards inside grid cells */
+      }
+
+      @media (max-width: 1024px) {
+        .links-grid {
+          grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablet */
+        }
+      }
+
+      @media (max-width: 640px) {
+        .links-grid {
+          grid-template-columns: 1fr; /* single card per row on mobile */
+        }
+      }
+
+      .video-card {
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 320px;
+        height: 100%;
+      }
+
+      .video-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .thumbnail-container {
+        position: relative;
+        padding-top: 56.25%; /* 16:9 ratio */
+        background-color: #000;
+      }
+
+      .video-thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+
+      .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--gold);
+        font-size: 3.5rem;
+        opacity: 0.8;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+        transition: opacity 0.3s ease;
+      }
+
+      .video-card:hover .play-icon {
+        opacity: 1;
+      }
+
+      .video-info {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+      }
+
+      .video-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--deep-green);
+        height: auto;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .video-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--deep-green);
+        font-size: 0.85rem;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--deep-green);
+      }
+
+      .video-meta i {
+        margin-right: 6px;
       }
 
       /* Past Events Section */
@@ -465,10 +573,6 @@
           grid-template-columns: 1fr;
         }
 
-        .links-grid {
-          grid-template-columns: 1fr;
-        }
-
         .carousel-item {
           height: 250px;
         }
@@ -587,7 +691,10 @@
     </footer>
 
     <script>
-      // Event data
+      // --- YouTube API key (as provided) ---
+      const API_KEY = "AIzaSyDH2HM_h4PsMZ270QUVQ5OvOPk9BsPrgbg";
+
+      // Event data (same as your provided array)
       const eventsData = [
         {
           id: 1,
@@ -628,7 +735,10 @@
               "events/al atqan academy/sydney/3.jpg",
             ],
           ],
-          links: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+          links: [
+            "https://youtu.be/wnFvHMjiu_Y?si=83y1uS3mGBqYz2Ge",
+            "https://youtu.be/wnFvHMjiu_Y?si=83y1uS3mGBqYz2Ge",
+          ],
           pastEvents: [],
         },
         {
@@ -778,7 +888,7 @@
               "events/02 EID SHOW/melton (5).jpeg",
             ],
           ],
-          links: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+          links: [],
           pastEvents: [],
         },
       ];
@@ -792,6 +902,60 @@
         const urlParams = new URLSearchParams(queryString);
         for (const [key, value] of urlParams) params[key] = value;
         return params;
+      }
+
+      // --- Helpers ---
+      function extractVideoId(url) {
+        try {
+          // Try URL parsing first
+          const u = new URL(url);
+          const v = u.searchParams.get("v");
+          if (v && v.length === 11) return v;
+          // fallback to path-style (youtu.be/ID or /embed/ID)
+          const path = u.pathname;
+          const parts = path.split("/");
+          const candidate = parts.pop() || parts.pop(); // last non-empty
+          if (candidate && candidate.length === 11) return candidate;
+        } catch (err) {
+          // If url isn't fully qualified, fallback to regex
+        }
+        // Regex fallback
+        const re = /(?:v=|\/)([A-Za-z0-9_-]{11})(?:&|$)/;
+        const m = url.match(re);
+        return m ? m[1] : null;
+      }
+
+      function formatViews(views) {
+        const num = parseInt(views || 0, 10);
+        if (isNaN(num)) return "0";
+        if (num >= 1e6) return (num / 1e6).toFixed(1) + "M";
+        if (num >= 1e3) return (num / 1e3).toFixed(1) + "K";
+        return num.toString();
+      }
+
+      async function fetchVideoMeta(videoId) {
+        try {
+          const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${API_KEY}`;
+          const res = await fetch(url);
+          const data = await res.json();
+          if (!data || !data.items || data.items.length === 0) return null;
+          const v = data.items[0];
+          return {
+            id: videoId,
+            title: v.snippet.title,
+            description: v.snippet.description,
+            channel: v.snippet.channelTitle,
+            thumbnails: v.snippet.thumbnails,
+            publishedAt: v.snippet.publishedAt,
+            views:
+              v.statistics && v.statistics.viewCount
+                ? v.statistics.viewCount
+                : 0,
+          };
+        } catch (err) {
+          console.error("fetchVideoMeta error", err);
+          return null;
+        }
       }
 
       function createImageGallery(images) {
@@ -814,6 +978,7 @@
           .map((carouselItems, carouselIndex) => {
             if (!carouselItems || carouselItems.length === 0) return "";
             return `
+          
         <h1 class="section-heading">Event Slides ${carouselIndex + 1}</h1>
         <div class="carousel-container">
           <div class="carousel" id="eventCarousel${carouselIndex}">
@@ -841,48 +1006,139 @@
           .join("");
       }
 
-      function createLinksSection(links) {
+      // Async: create links section by fetching youtube metadata
+      async function createLinksSection(links) {
         if (!links || links.length === 0) return "";
+        const cards = [];
+
+        for (const link of links) {
+          const videoId = extractVideoId(link);
+          if (!videoId) {
+            // fallback plain link card
+            cards.push(`
+              <a href="${link}" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fab fa-youtube"></i></div>
+                <div class="link-content">
+                  <h3>Watch on YouTube</h3>
+                  <p>${link}</p>
+                </div>
+              </a>
+            `);
+            continue;
+          }
+
+          const meta = await fetchVideoMeta(videoId);
+          if (!meta) {
+            // fallback if fetch failed
+            cards.push(`
+              <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fab fa-youtube"></i></div>
+                <div class="link-content">
+                  <h3>Watch on YouTube</h3>
+                  <p>https://www.youtube.com/watch?v=${videoId}</p>
+                </div>
+              </a>
+            `);
+            continue;
+          }
+
+          const thumbnail =
+            (meta.thumbnails &&
+              (meta.thumbnails.medium ||
+                meta.thumbnails.high ||
+                meta.thumbnails.default)) ||
+            {};
+          const thumbUrl = thumbnail.url || "";
+
+          cards.push(`
+            <a href="https://www.youtube.com/watch?v=${
+              meta.id
+            }" target="_blank" class="video-card" rel="noopener">
+              <div class="thumbnail-container">
+                <img class="video-thumbnail" src="${thumbUrl}" alt="${escapeHtml(
+            meta.title
+          )}">
+                <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+              </div>
+              <div class="video-info">
+                <div>
+                  <div class="video-title">${escapeHtml(meta.title)}</div>
+                  <div style="font-size:.9rem;color:#5a5a5a;margin-top:6px;">${escapeHtml(
+                    meta.channel
+                  )}</div>
+                </div>
+                <div class="video-meta">
+                  <span><i class="far fa-eye"></i> ${formatViews(
+                    meta.views
+                  )}</span>
+                  <span><i class="far fa-calendar"></i> ${formatDate(
+                    meta.publishedAt
+                  )}</span>
+                </div>
+              </div>
+            </a>
+          `);
+        }
+
         return `
       <div class="links-section">
         <h2 class="section-heading">Related Content</h2>
         <div class="links-grid">
-          ${links
-            .map(
-              (link) => `
-            <a href="${link}" target="_blank" class="link-card">
-              <div class="link-icon"><i class="fab fa-youtube"></i></div>
-              <div class="link-content">
-                <h3>Watch on YouTube</h3>
-                <p>Click to view related content</p>
-              </div>
-            </a>`
-            )
-            .join("")}
+          ${cards.join("")}
         </div>
       </div>`;
       }
 
-      function createPastEventsSection(pastEvents) {
+      // Safely escape text for HTML insertion
+      function escapeHtml(text) {
+        if (!text) return "";
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function formatDate(iso) {
+        try {
+          const d = new Date(iso);
+          return d.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+        } catch (e) {
+          return iso;
+        }
+      }
+
+      // Past events - async to await nested link sections
+      async function createPastEventsSection(pastEvents) {
         if (!pastEvents || pastEvents.length === 0) return "";
-        return `
-      <div class="past-events-section">
-        <h2 class="section-heading">PAST EVENTS</h2>
-        ${pastEvents
-          .map(
-            (event) => `
-          <div class="past-event">
-            <h3 class="past-event-heading">${event.heading}</h3>
-            <div class="event-intro">
-              ${event.introduction.map((p) => `<p>${p}</p>`).join("")}
+        let html = `<div class="past-events-section"><h2 class="section-heading">PAST EVENTS</h2>`;
+        for (const event of pastEvents) {
+          const linksHtml = await createLinksSection(event.links);
+          html += `
+            <div class="past-event">
+              <h3 class="past-event-heading">${escapeHtml(event.heading)}</h3>
+              <div class="event-intro">
+                ${
+                  event.introduction
+                    ? event.introduction
+                        .map((p) => `<p>${escapeHtml(p)}</p>`)
+                        .join("")
+                    : ""
+                }
+              </div>
+              ${createImageGallery(event.images)}
+              ${createCarousel(event.carousels)}
+              ${linksHtml}
             </div>
-            ${createImageGallery(event.images)}
-            ${createCarousel(event.carousels)}
-            ${createLinksSection(event.links)}
-          </div>`
-          )
-          .join("")}
-      </div>`;
+          `;
+        }
+        html += `</div>`;
+        return html;
       }
 
       // Carousel functionality
@@ -892,6 +1148,7 @@
         const carousel = document.getElementById(
           `eventCarousel${carouselIndex}`
         );
+        if (!carousel) return;
         const slides = carousel.querySelectorAll(".carousel-item");
         const indicators = carousel.parentElement.querySelectorAll(
           ".carousel-indicator"
@@ -901,11 +1158,9 @@
         currentSlides[carouselIndex] =
           (currentSlides[carouselIndex] + direction + slides.length) %
           slides.length;
-
         carousel.style.transform = `translateX(-${
           currentSlides[carouselIndex] * 100
         }%)`;
-
         indicators.forEach((indicator, i) => {
           indicator.classList.toggle(
             "active",
@@ -918,20 +1173,19 @@
         const carousel = document.getElementById(
           `eventCarousel${carouselIndex}`
         );
+        if (!carousel) return;
         const indicators = carousel.parentElement.querySelectorAll(
           ".carousel-indicator"
         );
-
         currentSlides[carouselIndex] = index;
         carousel.style.transform = `translateX(-${index * 100}%)`;
-
         indicators.forEach((indicator, i) => {
           indicator.classList.toggle("active", i === index);
         });
       }
 
-      // Load event content
-      document.addEventListener("DOMContentLoaded", function () {
+      // --- Page renderer (async) ---
+      document.addEventListener("DOMContentLoaded", async function () {
         const params = getUrlParams();
         const eventId = params.id ? parseInt(params.id) : 1;
         const event = eventsData.find((e) => e.id === eventId) || eventsData[0];
@@ -940,23 +1194,38 @@
           ? decodeURIComponent(params.title)
           : event.heading;
 
-        const eventContent = `
-      <div class="content-section">
-        <h1 class="section-heading">Introduction</h1>
-        <div class="event-intro">
-          ${event.introduction.map((p) => `<p>${p}</p>`).join("")}
-        </div>
-        ${createImageGallery(event.images)}
-        <br><br>
-        ${createCarousel(event.carousels)}
-        <br><br>
-        ${createLinksSection(event.links)}
-        <br><br>
-        ${createPastEventsSection(event.pastEvents)}
-      </div>
-    `;
+        const eventIntroHTML = `
+          <div class="content-section">
+            <h1 class="section-heading">Introduction</h1>
+            <div class="event-intro">
+              ${
+                event.introduction
+                  ? event.introduction
+                      .map((p) => `<p>${escapeHtml(p)}</p>`)
+                      .join("")
+                  : ""
+              }
+            </div>
+        `;
 
-        mainContent.innerHTML = eventContent;
+        const galleryHTML = createImageGallery(event.images);
+        const carouselHTML = createCarousel(event.carousels);
+        const linksHTML = await createLinksSection(event.links);
+        const pastEventsHTML = await createPastEventsSection(event.pastEvents);
+
+        const fullHTML = `
+          ${eventIntroHTML}
+          ${galleryHTML}
+          <br><br>
+          ${carouselHTML}
+          <br><br>
+          ${linksHTML}
+          <br><br>
+          ${pastEventsHTML}
+          </div>
+        `;
+
+        mainContent.innerHTML = fullHTML;
 
         // Newsletter form
         const newsletterForm = document.querySelector(".newsletter-form");
