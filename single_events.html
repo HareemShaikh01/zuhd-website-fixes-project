@@ -1167,7 +1167,7 @@
       // Past events - async to await nested link sections
       async function createPastEventsSection(pastEvents) {
         if (!pastEvents || pastEvents.length === 0) return "";
-        let html = `<div class="past-events-section"><h2 class="section-heading">PAST EVENTS</h2>`;
+        let html = `<div class="past-events-section"><h2 id="past-events" class="section-heading">PAST EVENTS</h2>`;
         for (const event of pastEvents) {
           const linksHtml = await createLinksSection(event.links);
           html += `
